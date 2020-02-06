@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
 	belongs_to :user
+	has_many :order_products, dependent: :destroy
 	
 	validates :order_day presence: true
 	validates :total_price presence: true
