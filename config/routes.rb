@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'products/admin/orders'
+  end
+  namespace :admin do
+    get 'users/products'
+  end
   devise_for :admins
   devise_for :users
   namespace :admin do
