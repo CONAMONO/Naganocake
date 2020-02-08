@@ -5,5 +5,5 @@ class Product < ApplicationRecord
 
   validates :name, presence: true
   validates :non_taxed_price, presence: true
-  validates :sale_status, presence: true
+  validates :sale_status, inclusion: {in: [true, false]}
 end

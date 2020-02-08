@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   devise_for :admins
   devise_for :users
+
   namespace :admin do
   	resources :genres, only: [:index,:create,:edit,:update]
   	resources :users, only: [:index,:edit,:show,:update]
