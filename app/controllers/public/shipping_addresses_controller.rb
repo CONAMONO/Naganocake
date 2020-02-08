@@ -14,6 +14,12 @@ class Public::ShippingAddressesController < ApplicationController
 	def new
 	end
 
+	def create
+	end
+
+	def new
+	end
+
 	def update
 	end
 
