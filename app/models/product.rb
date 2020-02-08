@@ -4,7 +4,7 @@ class Product < ApplicationRecord
   belongs_to :genre
 
 
-  validates :name_address, presence: true
-  validates :street_address, presence: true
-  validates :postal_code, presence: true
+  validates :name, presence: true
+  validates :non_taxed_price, presence: true
+  validates :sale_status, presence: true
 end
