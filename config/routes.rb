@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'products/admin/orders'
+  end
+  namespace :admin do
+    get 'users/products'
+  end
   devise_for :admins
   devise_for :users
   namespace :admin do
@@ -22,6 +28,7 @@ Rails.application.routes.draw do
 	resources :cart_items, only: [:create, :index, :update, :destroy]
 	delete "/cart_items"  => "cart_items#destroy"
 	root to: "orders#top"
+	get "about" => "order#about"
   end
 	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
