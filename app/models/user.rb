@@ -18,6 +18,6 @@ class User < ApplicationRecord
   validates :street_address, presence: true
   validates :postal_code, presence: true
   validates :phone_number, presence: true
-  validates :user_status, presence: true
+  validates :user_status, inclusion: {in: [true, false]}
 
 end
