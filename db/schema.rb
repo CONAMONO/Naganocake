@@ -59,13 +59,13 @@ ActiveRecord::Schema.define(version: 2020_02_06_062223) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.string "name"
-    t.string "image_id"
-    t.text "explain"
-    t.integer "non_taxed_price"
-    t.boolean "sale_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "image_id"
+    t.string "explain"
+    t.integer "non_taxed_price"
+    t.boolean "sale_status"
   end
 
   create_table "shipping_addresses", force: :cascade do |t|
