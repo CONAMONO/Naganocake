@@ -7,6 +7,12 @@ class Public::ShippingAddressesController < ApplicationController
 
 	def edit
 	end
+	
+	def create
+	end
+	
+	def new
+	end
 
 	def update
 	end
