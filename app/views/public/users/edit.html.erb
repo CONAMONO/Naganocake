@@ -1,0 +1,20 @@
+<container>
+	<div class="row">
+		<div>
+			<%= form_for[:public, @shipping_address] do |sh_address| %>
+			<h4>配送先編集</h4>
+			<table>
+				 <tr>
+					<th class="active">郵便番号</th>
+					<td> <%= sh_address.text_area :postal_code %> </td>
+					<th class="active">住所</th>
+					<td> <%= sh_address.text_area :street_address %> </td>
+					<th class="active">宛名</th>
+					<td> <%= sh_address.text_area :name_address %> </td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+
+</container>
