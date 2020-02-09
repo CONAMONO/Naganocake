@@ -10,31 +10,21 @@
 	<div class = "row">
 		<div class ="col-xs-2"></div>
 			<div class ="col-xs-4">
-				<table class ="table">
-					<tbody>
-						<tr>
-							<th>顧客ID</th><td></td>
-						</tr>
-						<tr>
-							<th>氏名</th><td></td>
-						</tr>
-						<tr>
-							<th>フリガナ</th><td></td>
-						</tr>
-						<tr>
-							<th>郵便番号</th><td></td>
-						</tr>
-						<tr>
-							<th>住所</th><td></td>
-						</tr>
-						<tr>
-							<th>電話番号</th><td></td>
-						</tr>
-						<tr>
-							<th>メールアドレス</th><td></td>
-						</tr>
-					</tbody>
-				</table>
+				<p>顧客ID<%= @user.id %><%= @user.user_status %></p>
+				<p>氏名<%= @user.first_name %><%= @user.last_name %></p>
+				<p>フリガナ<%= @user.first_name_kata %><%= @user.last_name_kata %></p>
+				<p>郵便番号<%= @user.postal_code %></p>
+				<p>住所<%= @user.street_address %></p>
+				<p>電話番号<%= @user.phone_number %></p>
+				<p>メールアドレス<%= @user.email %></p>
+				<div class="actions">
+					<%= link_to edit_admin_user_path(@user.id) do %>
+			            <button type="submit" class="btn btn-primary">編集する</button>
+			        <% end %>
+			        <%= link_to admin_products_path do %>
+			            <button type="submit" class="btn btn-primary">注文履歴一覧</button>
+			        <% end %>
+		        </div>
 			</div>
 		<div class ="col-xs-6"></div>
 	</div>

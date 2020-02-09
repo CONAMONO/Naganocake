@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   end
   devise_for :admins
   devise_for :users
+  as :admins do
+    get 'admin/edit' => 'devise/registrations#edit', :as => 'edit_admin_registration'
+    put 'admin' => 'devise/registrations#update', :as => 'admin_registration'
+  end
 
   namespace :admin do
   	resources :genres, only: [:index,:create,:edit,:update]
