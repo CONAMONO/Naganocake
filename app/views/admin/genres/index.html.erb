@@ -23,7 +23,12 @@
 		<% @genres.each do |genres| %>
 		<tr>
 			<td><%= genres.name %></td>
-			<td><%= genres.status %>
+			<td>
+				<% if genres.status == true %>
+					有効
+				<% else %>
+					無効
+				<% end %>
 			</td>
 			<td><%= link_to "編集する", edit_admin_genre_path(genres.id) %> </td>
 		</tr>
