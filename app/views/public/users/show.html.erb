@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="">
+	<title>マイページ</title>
+</head>
+<body>
+	<div class="mypage-title">
+		<h2>マイページ</h2>
+	</div>
+
+	<header id="header" class="">
+		<h3 class="mypage-item header-text">登録情報</h3>
+		<%= link_to '編集する', edit_public_users_path, class: "btn btn-default" %>
+		<%= link_to 'パスワードを変更する', edit_user_registration_path, class: "btn btn-default" %>
+	</header><!-- /header -->
+
+	<div class="mypage-info">
+		<table>
+			<tbody>
+				<tr>
+					<td>氏名</td>
+					<td><%= @user.first_name + " " + @user.last_name %></td>
+				</tr>
+
+				<tr>
+					<td>カナ</td>
+					<td><%= @user.first_name_kata + " " + @user.last_name_kata %></td>
+				</tr>
+
+				<tr>
+					<td>郵便番号</td>
+					<td><%= "〒" + @user.postal_code %></td>
+				</tr>
+
+				<tr>
+					<td>住所</td>
+					<td><%= @user.street_address %></td>
+				</tr>
+
+				<tr>
+					<td>電話番号</td>
+					<td><%= @user.phone_number %></td>
+				</tr>
+
+				<tr>
+					<td>メールアドレス</td>
+					<td><%= @user.email %></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div>
+		<h3 class="mypage-item">配送先</h3>
+		<%= link_to '一覧を見る', public_shipping_addresses_path, class: "btn btn-default" %>
+	</div>
+
+	<div>
+		<h3 class="mypage-item">注文履歴</h3>
+		<%= link_to '一覧を見る', public_orders_path, class: "btn btn-default" %>
+	</div>
+</body>
+</html>

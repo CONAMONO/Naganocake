@@ -1,20 +1,60 @@
-<container>
-	<div class="row">
-		<div>
-			<%= form_for[:public, @shipping_address] do |sh_address| %>
-			<h4>配送先編集</h4>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="">
+	<title>登録情報変更</title>
+</head>
+<body>
+	<%= form_for(@user, url: public_users_path) do |f| %>
+		<%= render 'layouts/error_messages', model: f.object %>
+		<header id="header" class="">
+			<h3 class="mydata-item header-text">登録情報編集</h3>
+			<%= link_to '退会する', public_users_confirm_path, class: "btn btn-default" %>
+		</header><!-- /header -->
+
+		<div class="mydata-info">
 			<table>
-				 <tr>
-					<th class="active">郵便番号</th>
-					<td> <%= sh_address.text_area :postal_code %> </td>
-					<th class="active">住所</th>
-					<td> <%= sh_address.text_area :street_address %> </td>
-					<th class="active">宛名</th>
-					<td> <%= sh_address.text_area :name_address %> </td>
-				</tr>
+				<tbody>
+					<tr>
+						<td>氏名</td>
+						<td><%= f.text_field :first_name, value: @user.first_name %></td>
+						<td><%= f.text_field :last_name, value: @user.last_name %></td>
+					</tr>
+
+					<tr>
+						<td>カナ</td>
+						<td><%= f.text_field :first_name_kata, value: @user.first_name_kata  %></td>
+						<td><%= f.text_field :last_name_kata, value: @user.last_name_kata %></td>
+					</tr>
+
+					<tr>
+						<td>郵便番号</td>
+						<td><%= f.text_field :postal_code, value: @user.postal_code %></td>
+					</tr>
+
+					<tr>
+						<td>住所</td>
+						<td><%= f.text_field :street_address, value: @user.street_address %></td>
+					</tr>
+
+					<tr>
+						<td>電話番号</td>
+						<td><%= f.text_field :phone_number, value: @user.phone_number %></td>
+					</tr>
+
+					<tr>
+						<td>メールアドレス</td>
+						<td><%= f.email_field :email, value: @user.email %></td>
+					</tr>
+				</tbody>
 			</table>
+
+			<div>
+				<%= f.submit '編集内容を保存する', class: "btn btn-default" %>
+			</div>
+
 		</div>
-	</div>
-
-
-</container>
+	<% end %>
+</body>
+</html>

@@ -1,6 +1,23 @@
 class Admin::ProductsController < ApplicationController
-<<<<<<< HEAD
-  
-=======
->>>>>>> 05a88fbf54aad6a2b8ada63c2e9dceaa860681a8
+	def index
+	end
+
+	def new
+		@product = Product.new
+	end
+
+	def create
+		@product = Product.new(product_params)
+		if @product.save
+			redirect_to admin_product_path
+		else
+			render 'new'
+			@product = Product.new
+		end
+	end
+
+	private
+	def product_params
+		params.require(:product).permit(:image,:name,:explain,:genre,:non_taxed_price)
+	end
 end

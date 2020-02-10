@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="">
+	<title>退会ページ</title>
+</head>
+<body>
+	<div>
+		<%= form_for(@user, url: public_users_path) do |f| %>
+			<h4>本当に退会しますか？</h4>
+			<br>
+			<p>退会すると、会員登録情報や</p>
+			<p>これまでの購入履歴が閲覧できなくなります。</p>
+			<p>退会する場合は、「退会する」をクリックしてください。</p>
+			<br>
+			
+			<%= f.hidden_field :user_status, :value => true %>
+			<%= link_to '退会しない', public_users_path, class: "btn btn-default" %>
+			<%= f.submit "退会する", class: "btn btn-default" %>
+		<% end %>
+	</div>
+
+</body>
+</html>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: "public/orders#top"
+
   namespace :admin do
     get 'products/admin/orders'
   end
