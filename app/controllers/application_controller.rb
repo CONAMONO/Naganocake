@@ -17,7 +17,6 @@ class ApplicationController < ActionController::Base
     	    root_path
     	end
 	end
-  
   protected
   def configure_permitted_parameters
   	added_attrs = [ :first_name, :last_name, :first_name_kata, :last_name_kata, :street_address, :postal_code, :phone_number, :user_status, :email, :password, :password_confirmation]
