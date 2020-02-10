@@ -1,0 +1,31 @@
+<div class= "container-fluid">
+	<div class ="row">
+		<div class ="col-xs-3">
+			<div class ="text-right">
+				<h2>会員編集画面</h2>
+			</div>
+		</div>
+		<div class ="col-xs-9"></div>
+	</div>
+	<div class = "row">
+		<div class ="col-xs-2"></div>
+			<div class ="col-xs-4">
+				<%= form_for(@user, url:admin_user_path(@user.id)) do |f| %>
+				<p>顧客ID<%= @user.id %></p>
+				<p>氏名<%= f.text_field :first_name %><%= f.text_field :last_name %></p>
+				<p>フリガナ<%= f.text_field :first_name_kata %><%= f.text_field :last_name_kata %></p>
+				<p>郵便番号<%= f.text_field :postal_code %></p>
+				<p>住所<%= f.text_field :street_address %></p>
+				<p>電話番号<%= f.text_field :phone_number %></p>
+				<p>メールアドレス<%= f.text_field :email %></p>
+				<p>会員ステータス
+					<label>
+					<%= f.radio_button :user_status, "false" %> 有効 </label>
+					<label><%= f.radio_button :user_status, "true" %> 退会済み</label>
+				</p>
+				<%= f.submit 'Update User' %>
+		        <% end %>
+			</div>
+		<div class ="col-xs-6"></div>
+	</div>
+</div>
