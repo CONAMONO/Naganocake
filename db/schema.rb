@@ -38,11 +38,11 @@ ActiveRecord::Schema.define(version: 2020_02_10_045704) do
   end
 
   create_table "order_products", force: :cascade do |t|
+    t.integer "product_count"
     t.integer "taxed_price"
     t.integer "production_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "quantity"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2020_02_10_045704) do
     t.string "image_id"
     t.text "explain"
     t.integer "non_taxed_price"
+    t.integer "genre_id"
     t.boolean "sale_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
