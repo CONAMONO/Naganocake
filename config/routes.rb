@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: "public/orders#top"
+
   namespace :admin do
     get 'products/admin/orders'
   end
@@ -28,7 +30,6 @@ Rails.application.routes.draw do
 	resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
 	resources :cart_items, only: [:create, :index, :update, :destroy]
 	delete "/cart_items"  => "cart_items#destroy"
-	root to: "orders#top"
 	get "about" => "order#about"
   end
 	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
