@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 	if admin_signed_in?
 	    admin_top_path
 	    else
-	    	public_shipping_addresses_path
+	    	root_path
 	    end
 	end
 
