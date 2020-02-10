@@ -15,10 +15,15 @@
 		<% @product.each do |product| %>
 			<tr>
 				<td><%= product.id %></td>
-				<td><<%= product.name %>/td>
+				<td><%= product.name %></td>
 				<td><%= product.non_taxed_price %></td>
-				<td><%= product.genre %></td>
-				<td><%= product.sale_status %></td>
+				<td><%= product.genre.name %></td>
+				<td><% if product.sale_status == true %>
+						販売中
+					<% else %>
+						売切れ
+					<% end %>
+				</td>
 				<td>
 					<%= attachment_image_tag product, :image, :fill,60,60, format: 'jpeg',class: "img-circle pull-left profile-image" %>
 				</td>
