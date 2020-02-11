@@ -3,7 +3,7 @@
 </section>
 <%= form_for @genre, url: admin_genres_path do |f|%>
 	<div>
-		<label>ジャンル</label>
+		<%= f.label "ジャンル" %>
 		<%= f.text_field :name %>
 		<label><%= f.radio_button :status,"1" %>有効</label>
 		<label><%= f.radio_button :status,"0" %>無効</label>
