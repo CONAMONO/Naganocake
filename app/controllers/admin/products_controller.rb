@@ -1,5 +1,6 @@
 class Admin::ProductsController < ApplicationController
 	def index
+		@product = Product.all
 	end
 
 	def new
@@ -8,16 +9,17 @@ class Admin::ProductsController < ApplicationController
 
 	def create
 		@product = Product.new(product_params)
+		binding.pry
 		if @product.save
-			redirect_to admin_product_path
+			redirect_to admin_products_path
 		else
-			render 'new'
 			@product = Product.new
+			render 'new'
 		end
 	end
 
 	private
 	def product_params
-		params.require(:product).permit(:image,:name,:explain,:genre,:non_taxed_price)
+		params.require(:product).permit(:image,:name,:explain,:genre_id,:non_taxed_price,:sale_status)
 	end
 end
