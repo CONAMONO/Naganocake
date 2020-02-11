@@ -1,1 +1,19 @@
-<h2>商品詳細画面</h2>
+<section>
+	<h2>商品 詳細画面</h2>
+</section>
+	<%= attachment_image_tag @product, :image, :fill,120,120 %><br />
+	<label>商品名</label>
+		<%= @product.name %><br />
+	<label>商品説明</label>
+		<%= @product.explain %><br />
+	<label>ジャンル</label>
+		<%= @product.genre.name %><br />
+	<label>税込価格(税抜価格)</label>
+		<%= @product.non_taxed_price %>円<br />
+	<label>販売ステータス</label>
+		<% if @product.sale_status == true %>
+			販売中
+		<% else %>
+			売切れ
+		<% end %><br />
+	<%= link_to "編集する", edit_admin_product_path(@product.id) %>

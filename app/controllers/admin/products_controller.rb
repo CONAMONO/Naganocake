@@ -9,13 +9,19 @@ class Admin::ProductsController < ApplicationController
 
 	def create
 		@product = Product.new(product_params)
-		binding.pry
 		if @product.save
-			redirect_to admin_products_path
+			redirect_to admin_product_path(@product.id)
 		else
-			@product = Product.new
-			render 'new'
+			@product = Product.new(product_params)
+			render 'create'
 		end
+	end
+
+	def show
+		@product = Product.find(params[:id])
+	end
+
+	def edit
 	end
 
 	private
