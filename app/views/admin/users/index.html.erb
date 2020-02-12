@@ -25,7 +25,12 @@
 							<td><%= user.id %></td>
 							<td><%= link_to user.first_name, admin_user_path(user.id) %></td>
 							<td><%= user.email %></td>
-							<td><%= user.user_status %></td>
+							<td><% if user.user_status == true %>
+								<span>有効</span>
+								<% else %>
+								<span>退会済</span>
+								<% end %>
+							</td>
 						</tr>
 						<% end %>
 					</tbody>
