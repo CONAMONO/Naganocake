@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 	resource :users, only: [:create, :show, :edit, :update]
 	get "/users/confirm"  => "users#confirm"
 	patch "/users/confirm" => "users#update"
-	resources :products, only: [:index, :show], param: :id
+	resources :products, only: [:index, :show]
 	resources :orders, only: [:index, :show, :new, :create]
 	get "/orders/confirm"  => "orders#confirm"
 	post "/orders"  => "orders#create"
