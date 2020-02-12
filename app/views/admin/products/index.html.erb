@@ -25,7 +25,7 @@
 								<%= product.name %>
 							<% end %>
 							</td>
-						<td><%= number_with_delimiter(product.non_taxed_price) %>円</td>
+						<td><%= number_with_delimiter(product.non_taxed_price) %>円	</td>
 						<td><%= product.genre.name %></td>
 						<td><% if product.sale_status == true %>
 								販売中
