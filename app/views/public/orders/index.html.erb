@@ -1,0 +1,36 @@
+<div class= "container-fluid">
+	</div>
+	<div class = "row">
+		<div class ="col-xs-2"></div>
+			<div class ="col-xs-8">
+				<h3>注文履歴一覧</h3>
+				<table class ="table table-bordered">
+					<thead>
+						<tr class = "active">
+							<th>注文日</th>
+							<th>配送先</th>
+							<th>注文商品</th>
+							<th>支払金額</th>
+							<th>ステータス</th>
+							<th>注文詳細</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @orders.each do |order| %>
+						<tr>
+							<td><%= order.created_at.strftime("%Y/%m/%d") %></td>
+							<td><%= order.postal_code %><br><%= order.street_address %><br><%= order.name_address %></td>
+							<td><%= order.name_address %></td>
+							<td><%= order.order_day %></td>
+							<td><%= order.order_status %></td>
+							<td><%= link_to public_order_path(order.id) do %>
+								<div type="button" class="btn btn-primary">表示する</div>
+								<% end %></td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		<div class ="col-xs-2"></div>
+	</div>
+</div>

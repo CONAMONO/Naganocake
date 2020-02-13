@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+	
+	
 	def top
 		@products = Product.all
 		@products_count = Product.select("id").count
@@ -12,6 +14,19 @@ class Public::OrdersController < ApplicationController
 		@shipping_addresses = current_user.shipping_addresses.all
 		@user = User.find(current_user.id)
 	end
+
+	
+	def index
+		@user = User.find(current_user.id)
+	  	@orders = @user.orders
+	end
+  
+	def show
+		@order = Order.find(params[:id])
+	    @order_products = @order.order_products
+	    @products = Product.all
+	end
+
 
 	def create
 	  tax = 1.10
