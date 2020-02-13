@@ -2,15 +2,14 @@ class Admin::OrderProductsController < ApplicationController
 
 	def update
 		@order_product = OrderProduct.find(params[:id])
+		@order = @order_product.order
 		if 	@order_product.update(order_product_params)
 			if @order_product.production_status == "製作完了" then
-				order.order_status == "発送準備中"
+				@order.update(order_status: "発送準備中")
 			elsif @order_product.production_status == "製作中"then
-				order.order_status == "製作中"
+				@order.update(order_status: "製作中")
 			end
-			redirect_to admin_order_path(@order_product.order.id)
-		else
-			redirect_to admin_order_path(@order_product.order.id)
+			redirect_to admin_order_path(@order.id)
 		end
 	end
 
