@@ -103,10 +103,10 @@
 		</div>
 
 		<div>
-			<%= f.hidden_field :order_day, :value => Date.today.strftime("%Y-%m-%d") %>
+			<%#= f.hidden_field :order_day, :value => Date.today.strftime("%Y/%m/%d") %>
 			<%= f.hidden_field :user_id, :value => current_user.id %>
 			<%= f.hidden_field :pay, :value => 800 %>
-			<%= f.hidden_field :order_status, :value => 0 %>
+			<%= f.hidden_field :order_status, :value => "入金待ち" %>
 		</div>
 
 		<div>

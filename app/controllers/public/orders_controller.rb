@@ -37,12 +37,11 @@ class Public::OrdersController < ApplicationController
 
       if order.save == true
       	#flash[:success] = 'You have creatad book successfully.'
-		order_product = OrderProduct.new
-
 		@cart_items.each do |cart_item|
+			order_product = OrderProduct.new
 			order_product.product_count = cart_item.quantity
-			order_product.taxed_price = ((cart_item.product.non_taxed_price * tax) * cart_item.quantity).floor
-			order_product.production_status = 0
+			order_product.taxed_price = (cart_item.product.non_taxed_price * tax).floor
+			order_product.production_status = "着手不可"
 			order_product.order_id = order.id
 			order_product.product_id = cart_item.product_id
 
@@ -52,6 +51,8 @@ class Public::OrdersController < ApplicationController
 				return
 			end
 		end
+
+		@cart_items.destroy_all
 
         redirect_to public_orders_thanks_path and return
       else
