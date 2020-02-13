@@ -24,9 +24,9 @@ Rails.application.routes.draw do
 	patch "/users/confirm" => "users#update"
 	resources :products, only: [:index, :show]
 	resources :orders, only: [:index, :show, :new, :create]
-	get "/orders/confirm"  => "orders#confirm"
-	post "/orders"  => "orders#create"
-	get "/orders/thanks"  => "users#thanks"
+	get "/orders_confirm"  => "orders#confirm",as: 'orders_confirm'
+	#post "/orders"  => "orders#create" #ダブりおよび他使用箇所なしのため削除
+	get "/orders_thanks"  => "orders#thanks",as: 'orders_thanks'
 	resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
 	resources :cart_items, only: [:create, :index, :update, :destroy]
 	delete "/cart_items"  => "cart_items#destroy"

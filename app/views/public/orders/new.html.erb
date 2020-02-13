@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="">
+	<title>注文情報入力</title>
+</head>
+<body>
+	<div>
+		<%#= render 'layouts/error_messages', model: f.object %>
+
+		<div>
+			<h2>購入情報入力</h2>
+		</div>
+
+		<%#= form_with model: @order, url: public_orders_confirm_path, method: :get,data: {remote: false} do |f| %>
+		<%= form_with url: public_orders_confirm_path, method: :get,data: {remote: false} do |f| %>
+			<div>
+				<h3>支払方法</h3>
+				<div>
+					<%= f.radio_button :payment_method, 'クレジットカード', checked: true %>
+					<%= 'クレジットカード' %>
+				</div>
+
+				<div>
+					<%= f.radio_button :payment_method, '銀行振込' %>
+					<%= '銀行振込' %>
+				</div>
+			</div>
+
+			<div>
+				<h3>お届け先</h3>
+
+				<div>
+					<%= f.radio_button :address_id, 1, checked: true %>
+					<h4>ご自身の住所</h4>
+					<div>
+						<%= '〒' + @user.postal_code + " " + @user.street_address %>
+						<br>
+						<%= @user.first_name + "　" + @user.last_name  %>
+					</div>
+				</div>
+
+				<div>
+					<%= f.radio_button :address_id, 2 %>
+					<h4>登録済住所から選択</h4>
+						<div>
+							<%= f.collection_select :select_addr, @shipping_addresses, :id, :view_address  %>
+						</div>
+					</div>
+
+					<div>
+						<%= f.radio_button :address_id, 3 %>
+						<h4>新しいお届け先</h4>
+					<div>
+						<table>
+							<tbody>
+								<tr>
+									<td>郵便番号</td>
+									<td><%= f.text_field :new_postal_code %></td>
+									<td><p>ハイフンなし</p></td>
+								</tr>
+								<tr>
+									<td>住所</td>
+									<td><%= f.text_field :new_street_address %></td>
+								</tr>
+								<tr>
+									<td>宛名</td>
+									<td><%= f.text_field :new_name %></td>
+								</tr>
+							</tbody>
+						</table>
+						<div>
+					</div>
+				</div>
+				<%# binding.pry %>
+			</div>
+
+			<div>
+				<%= f.submit '確認画面へ進む', class: "btn btn-default" %>
+				<%#= f.submit '確認画面へ進む', public_orders_confirm_path, class: "btn btn-default" %>
+			</div>
+
+		<% end %>
+	</div>
+
+</body>
+</html>
