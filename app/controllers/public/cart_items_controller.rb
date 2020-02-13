@@ -46,3 +46,4 @@ class Public::CartItemsController < ApplicationController
         params.require(:cart_item).permit(added_attrs)
     end
 end
+
