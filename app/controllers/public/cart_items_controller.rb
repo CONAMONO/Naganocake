@@ -11,8 +11,9 @@ class Public::CartItemsController < ApplicationController
 	def update
 		cart_item = CartItem.find(params[:id])
 		#flash[:success] = 'You have updated user successfully.'
+
 		if cart_item.update(cart_item_params)
-			redirect_to public_cart_items_path
+			redirect_to public_cart_items_path and return
 		else
 			@cart_items = current_user.cart_items.all
 			@error = "・0以上の数字を入力してください"
