@@ -16,11 +16,10 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     if @order.update(order_params)
       if @order.order_status == "入金確認" then
-        order_product.production_status == "製作待ち"
+         @order_products = @order.order_products
+         @order_products.update(production_status: "製作待ち")
       end
       redirect_to admin_order_path(@order.id)
-    else
-      render 'show'
     end
   end
 
@@ -31,7 +30,7 @@ class Admin::OrdersController < ApplicationController
   end
 
   def order_product_params
-    params.require(:order).permit(:order_id,:product_id,:product_count,:taxed_price,:production_status,)
+    params.require(:order_product).permit(:order_id,:product_id,:product_count,:taxed_price,:production_status,)
   end
 
 end

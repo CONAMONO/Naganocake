@@ -1,0 +1,17 @@
+<container>
+	<div class="row">
+		<div class="col-md-9">
+			<div>
+				<%= form_for [:public, @cart] do |add| %>
+					<%= attachment_image_tag @product, :image, size: "400x200" %>
+					<%= @product.name %>
+					<%= @product.explain %>
+					<%= (@product.non_taxed_price*1.1).floor.to_s + "円" %>
+					<%= add.label :quantity, "個数選択" %>
+					<%= add.select :quantity, [1,2,3,4,5,6,7,8,9]%>
+					<%= add.submit "カートに入れる", class: "btn btn-primary" %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</container>

@@ -37,16 +37,17 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% @shipping_addresses.each do |index| %>
+					<% @sh_addresses.each do |index| %>
 					<tr>
 						<td><%= index.postal_code %></td>
 						<td><%= index.street_address %></td>
 						<td><%= index.name_address %></td>
-						<td><%= link_to "編集する", public_shipping_address_path(index.id),class: "btn btn-primary" %>
+						<td><%= link_to "編集する", edit_public_shipping_address_path(index.id),class: "btn btn-primary" %>
 							<%= link_to "削除する", public_shipping_address_path(index.id), method: :delete, "data-confirm"=> "本当に削除しますか？", class: "btn btn-danger" %>
 						</td>
 					<% end %>
 					</tr>
+
 				</tbody>
 			</table>
 		</div>
