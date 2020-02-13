@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+	
+	
 	def top
 		@products = Product.all
 		@products_count = Product.select("id").count
@@ -12,6 +14,19 @@ class Public::OrdersController < ApplicationController
 		@shipping_addresses = current_user.shipping_addresses.all
 		@user = User.find(current_user.id)
 	end
+
+	
+	def index
+		@user = User.find(current_user.id)
+	  	@orders = @user.orders
+	end
+  
+	def show
+		@order = Order.find(params[:id])
+	    @order_products = @order.order_products
+	    @products = Product.all
+	end
+
 
 	def create
 	  tax = 1.10
@@ -72,12 +87,6 @@ class Public::OrdersController < ApplicationController
 	def thanks
 	end
 
-
-    private
-    def cart_item_params
-    	added_attrs = [:quantity]
-        params.require(:cart_item).permit(added_attrs)
-    end
     private
     def order_params
     	added_attrs = [:order_day, :user_id, :total_price, :pay, :name_address, :street_address, :postal_code, :payment_method, :order_status]
