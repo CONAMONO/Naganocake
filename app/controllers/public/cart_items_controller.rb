@@ -1,6 +1,9 @@
 class Public::CartItemsController < ApplicationController
-	def create
 
+	def create
+		@add_cart = CartItem.new(cart_item_params)
+		@add_cart.save
+		redirect_to public_cart_items_path
 	end
 
 	def index
@@ -39,7 +42,7 @@ class Public::CartItemsController < ApplicationController
 
     private
     def cart_item_params
-    	added_attrs = [:quantity]
+    	added_attrs = [:quantity, :user_id,:product_id]
         params.require(:cart_item).permit(added_attrs)
     end
 end
