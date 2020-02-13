@@ -31,7 +31,7 @@ class Admin::OrdersController < ApplicationController
   end
 
   def order_product_params
-    params.require(:order).permit(:order_id,:product_id,:product_count,:taxed_price,:production_status,)
+    params.require(:order_product).permit(:order_id,:product_id,:product_count,:taxed_price,:production_status,)
   end
 
 end
