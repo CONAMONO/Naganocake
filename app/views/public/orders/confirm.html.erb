@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="">
+	<title>注文情報確認</title>
+</head>
+<body>
+	<% @total = 0 %>
+	<% @tax = 1.10 %>
+	<% @pay = 800 %>
+	<%= @error %>
+	<div>
+		<h3>注文情報確認</h3>
+	</div>
+
+	<%= form_for(@order, url: public_orders_path) do |f| %>
+		<div>
+			<table>
+				<thead>
+					<tr>
+						<th>商品名</th>
+						<th>単価(税込)</th>
+						<th>数量</th>
+						<th>小計</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @cart_items.each do |cart_item| %>
+							<tr>
+								<td>
+									<%= attachment_image_tag cart_item.product, :image, :fill, 300, 300, format: 'jpeg' %>
+									<%= cart_item.product.name %>
+								</td>
+								<td>
+									<%= (cart_item.product.non_taxed_price * @tax).floor %>
+								</td>
+								<td>
+									<%= cart_item.quantity %>
+								</td>
+								<td>
+									<%= ((cart_item.product.non_taxed_price * @tax) * cart_item.quantity).floor %>
+									<% @total += ((cart_item.product.non_taxed_price * @tax) * cart_item.quantity).floor  %>
+								</td>
+							</tr>
+					<% end %>
+				</tbody>
+			</table>
+
+			<table>
+				<tbody>
+					<tr>
+						<td>送料</td>
+						<td><%= @pay %></td>
+					</tr>
+					<tr>
+						<td>商品合計</td>
+						<td><%= @total.floor %></td>
+						<%= f.hidden_field :total_price, :value => @total.floor %>
+					</tr>
+					<tr>
+						<% @total += @pay %>
+						<td>請求金額</td>
+						<td><%= @total.floor %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div>
+			<h4>支払方法</h4>
+			<%= f.hidden_field :payment_method, :value => @payment_method %>
+			<%= @payment_method %>
+		</div>
+
+		<div>
+			<h4>お届け先</h4>
+			<% if @address_id == "1" %>
+				<%= '〒' + @user.postal_code + " " + @user.street_address %>
+				<br>
+				<%= @user.first_name + "　" + @user.last_name  %>
+
+				<%= f.hidden_field :postal_code, :value => @user.postal_code %>
+				<%= f.hidden_field :street_address, :value => @user.street_address %>
+				<%= f.hidden_field :name_address, :value => @user.first_name %>
+			<% elsif @address_id == "2" %>
+				<%= '〒' + @shipping_addresses.find(@select_addr).postal_code + " " + @shipping_addresses.find(@select_addr).street_address %>
+				<br>
+				<%= @shipping_addresses.find(@select_addr).name_address %>
+
+				<%= f.hidden_field :postal_code, :value => @shipping_addresses.find(@select_addr).postal_code %>
+				<%= f.hidden_field :street_address, :value =>  @shipping_addresses.find(@select_addr).street_address %>
+				<%= f.hidden_field :name_address, :value => @shipping_addresses.find(@select_addr).name_address %>
+			<% else %>
+				<%= '〒' + @new_postal_code.insert(3, "-")  + " " + @new_street_address %>
+				<br>
+				<%= @new_name %>
+
+				<%= f.hidden_field :postal_code, :value => @new_postal_code.insert(3, "-")  %>
+				<%= f.hidden_field :street_address, :value => @new_street_address %>
+				<%= f.hidden_field :name_address, :value => @new_name %>
+			<% end %>
+		</div>
+
+		<div>
+			<%#= f.hidden_field :order_day, :value => Date.today.strftime("%Y/%m/%d") %>
+			<%= f.hidden_field :user_id, :value => current_user.id %>
+			<%= f.hidden_field :pay, :value => 800 %>
+			<%= f.hidden_field :order_status, :value => "入金待ち" %>
+		</div>
+
+		<div>
+			<%= f.submit '購入を確定する', class: "btn btn-default" %>
+		</div>
+	<% end %>
+</body>
+</html>
