@@ -27,7 +27,7 @@
 								<% end %></td>
 							<td><%= order.name_address %></td>
 							<% b = 0 %>
-							<% @order_products.each do |order_product| %>
+							<% order.order_products.each do |order_product| %>
 							<% b += order_product.product_count %>
 							<% end %>
 							<td><%= b %></td>
