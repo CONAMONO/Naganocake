@@ -1,5 +1,7 @@
 class Admin::OrdersController < ApplicationController
   def top
+    # @today_order = Order.where(created_at: Time.zone.today.beginning_of_day..Time.zone.today.end_of_day)
+    @today_order = Order.where(created_at: Time.now.all_day)
   end
 
   def index
