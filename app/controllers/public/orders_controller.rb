@@ -1,6 +1,5 @@
 class Public::OrdersController < ApplicationController
-	
-	
+
 	def top
 		@products = Product.all
 		@products_count = Product.select("id").count
@@ -15,11 +14,12 @@ class Public::OrdersController < ApplicationController
 		@shipping_addresses = current_user.shipping_addresses.all
 		@user = User.find(current_user.id)
 	end
-
-	
+  
 	def index
 		@user = User.find(current_user.id)
 	  	@orders = @user.orders
+	  	@order_products = OrderProduct.all
+	  	@products = Product.all
 	end
   
 	def show
@@ -38,6 +38,7 @@ class Public::OrdersController < ApplicationController
 
       if order.save == true
       	#flash[:success] = 'You have creatad book successfully.'
+
 		@cart_items.each do |cart_item|
 			order_product = OrderProduct.new
 			order_product.product_count = cart_item.quantity
@@ -52,7 +53,6 @@ class Public::OrdersController < ApplicationController
 				return
 			end
 		end
-
 		@cart_items.destroy_all
 
         redirect_to public_orders_thanks_path and return

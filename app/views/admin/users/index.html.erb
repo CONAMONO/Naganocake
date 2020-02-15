@@ -23,7 +23,7 @@
 						<% @users.each do |user| %>
 						<tr>
 							<td><%= user.id %></td>
-							<td><%= link_to user.first_name, admin_user_path(user.id) %></td>
+							<td><%= link_to user.first_name + user.last_name, admin_user_path(user.id) %></td>
 							<td><%= user.email %></td>
 							<td><% if user.user_status == true %>
 								<span>有効</span>

@@ -26,7 +26,11 @@
 								<%= order.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
 								<% end %></td>
 							<td><%= order.name_address %></td>
-							<td><%= order.order_day %></td>
+							<% b = 0 %>
+							<% @order_products.each do |order_product| %>
+							<% b += order_product.product_count %>
+							<% end %>
+							<td><%= b %></td>
 							<td><%= order.order_status %></td>
 						</tr>
 						<% end %>
