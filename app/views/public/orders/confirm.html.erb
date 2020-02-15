@@ -33,13 +33,13 @@
 									<%= cart_item.product.name %>
 								</td>
 								<td>
-									<%= (cart_item.product.non_taxed_price * @tax).floor %>
+									<%= number_to_currency((cart_item.product.non_taxed_price * @tax).floor, :unit => "", :precision =>0) %>
 								</td>
 								<td>
 									<%= cart_item.quantity %>
 								</td>
 								<td>
-									<%= ((cart_item.product.non_taxed_price * @tax) * cart_item.quantity).floor %>
+									<%= number_to_currency(((cart_item.product.non_taxed_price * @tax) * cart_item.quantity).floor, :unit => "", :precision =>0) %>
 									<% @total += ((cart_item.product.non_taxed_price * @tax) * cart_item.quantity).floor  %>
 								</td>
 							</tr>
@@ -55,13 +55,13 @@
 					</tr>
 					<tr>
 						<td>商品合計</td>
-						<td><%= @total.floor %></td>
+						<td><%= number_to_currency(@total.floor, :unit => "", :precision =>0) %></td>
 						<%= f.hidden_field :total_price, :value => @total.floor %>
 					</tr>
 					<tr>
 						<% @total += @pay %>
 						<td>請求金額</td>
-						<td><%= @total.floor %></td>
+						<td><%= number_to_currency(@total.floor, :unit => "", :precision =>0) %></td>
 					</tr>
 				</tbody>
 			</table>
@@ -82,7 +82,7 @@
 
 				<%= f.hidden_field :postal_code, :value => @user.postal_code %>
 				<%= f.hidden_field :street_address, :value => @user.street_address %>
-				<%= f.hidden_field :name_address, :value => @user.first_name %>
+				<%= f.hidden_field :name_address, :value => @user.first_name + " " + @user.last_name %>
 			<% elsif @address_id == "2" %>
 				<%= '〒' + @shipping_addresses.find(@select_addr).postal_code + " " + @shipping_addresses.find(@select_addr).street_address %>
 				<br>
