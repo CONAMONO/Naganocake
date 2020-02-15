@@ -6,6 +6,7 @@
 	<p>本日の注文件数</p>
 </div>
 <div>
-	<!-- User側の注文件数を反映させる -->
-	<p>X件</p>
+	<%= link_to admin_orders_path do %>
+	<%= @today_order.count %>件
+	<% end %>
 </div>

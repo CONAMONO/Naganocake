@@ -1,6 +1,23 @@
 class Public::CartItemsController < ApplicationController
+	def new
+		@cart = CartItem.new
+	end
+
 	def create
 
+		@cart = CartItem.new(cart_item_params)
+		cart = CartItem.find_by(user_id: current_user.id, product_id: @cart.product_id)
+			if cart.present?
+			quantit = @cart.quantity
+			@cart = CartItem.find_by(user_id: current_user.id, product_id: @cart.product_id)
+			@cart.quantity = quantit
+			#@cart.quantity = params[:quantity].to_i
+			@cart.update(cart_item_params)
+			redirect_to public_cart_items_path
+		else
+			@cart.save
+			redirect_to public_cart_items_path
+		end
 	end
 
 	def index
@@ -40,7 +57,9 @@ class Public::CartItemsController < ApplicationController
 
     private
     def cart_item_params
-    	added_attrs = [:quantity]
+    	added_attrs = [:quantity, :user_id,:product_id]
         params.require(:cart_item).permit(added_attrs)
     end
+
 end
+

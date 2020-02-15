@@ -1,9 +1,11 @@
 class Admin::OrdersController < ApplicationController
   def top
+    @today_order = Order.where(created_at: Time.now.all_day)
   end
 
   def index
   	@orders = Order.all
+    @order_products = OrderProduct.all
   end
 
   def show
