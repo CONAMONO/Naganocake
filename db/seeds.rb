@@ -14,5 +14,5 @@ Admin.create(
 
 Genre.create(
 	status: true,
-	name: "cake"
+	name: "ケーキ"
 	)

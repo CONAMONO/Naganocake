@@ -4,32 +4,14 @@
 		<div class="col-md-9">
 			<h3>商品 <h5> (全<%= @products_count %>件) </h5></h3>
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-3">
-			<table>
-				<thead>
-					<% @products.each do |products| %>
-					<tr>
-						<th>
-							<%= link_to public_product_path(products.id) do %>
-								<%= attachment_image_tag products, :image, size: "200x200" %>
-							<% end %>
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>
-							<%= link_to products.name, public_product_path(products.id) %>
-						</td>
-					</tr>
-					<tr>
-						<td>¥<%= products.non_taxed_price %></td>
-					</tr>
-					<% end %>
-				</tbody>
-			</table>
+		<% @products.each do |products| %>
+		<div class="col-xs-3">
+			<%= link_to public_product_path(products.id) do %>
+				<%= attachment_image_tag products, :image, size: "200x200" %>
+			<% end %>
+			<p><%= link_to products.name, public_product_path(products.id) %></p>
+			<p>¥<%= products.non_taxed_price %></p>
 		</div>
+	<% end %>
 	</div>
 </container>
