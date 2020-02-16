@@ -6,26 +6,39 @@
 	</div>
 	<div class="row"_>
 		<%= form_for [:admin, @product] do |f| %>
-		<div class="col-sm-3">
-
 <!--画像選択前にデフォルトがぞうを表示させる  -->
 <!-- 投稿する画像のプレビューを表示させる -->
-
-			<%= f.attachment_field :image, fallback:"no_image.jpg" %>
-		</div>
-		<div class="col-sm-9">
-			<%=f.label "商品名" %>
-				<%= f.text_field :name %><br />
-			<%= f.label "商品説明" %>
-				<%= f.text_area :explain %><br />
-			<%= f.label "ジャンル" %>
-				<%= f.collection_select :genre_id, Genre.where("status = 1"), :id, :name %><br />
-			<%= f.label "税抜価格" %>
-				<%= f.text_field :non_taxed_price %>円<br />
-			<%= f.label "販売ステータス" %>
-				<%= f.select :sale_status,[["販売中","true"],["売切れ","false"]] %><br />
-			<%= f.submit "新規登録", class: "btn btn-default" %>
+			<div class="col-sm-4">
+				<%= f.attachment_field :image, fallback:"no_image.jpg" %>
+			</div>
+			<div class="col-sm-8">
+				<table class="table line" style="width:40%">
+					<tr>
+						<th class="line"><%=f.label "商品名" %></th>
+						<td class="line"><%= f.text_field :name,style: "width:90%" %></td>
+					</tr>
+					<tr>
+						<th class="line" style="padding-top:25px"><%= f.label "商品説明" %></th>
+						<td class="line"><%= f.text_area :explain,style: "width:90%" %></td>
+					</tr>
+					<tr>
+						<th class="line"><%= f.label "ジャンル" %></th>
+						<td class="line"><%= f.collection_select :genre_id, Genre.where("status = 1"), :id, :name,{},style: "width:90%" %></td>
+					</tr>
+					<tr>
+						<th class="line"><%= f.label "税抜価格" %></th>
+						<td class="line"><%= f.text_field :non_taxed_price,style: "width:90%" %>円</td>
+					</tr>
+					<tr>
+						<th class="line"><%= f.label "販売ステータス" %></th>
+						<td class="line"><%= f.select :sale_status,[["販売中","true"],["売切れ","false"]],{},style: "width:90%" %></td>
+					</tr>
+					<tr>
+						<th class="line">&nbsp;</th>
+						<td class="line"><%= f.submit "新規登録", class: "btn btn-primary pull-right",style: "margin-right:20px" %></td>
+					</tr>
+				</table>
+			</div>
 		<% end %>
-		</div>
 	</div>
 </div>
