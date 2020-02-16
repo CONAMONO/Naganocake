@@ -1,6 +1,6 @@
 class Public::ProductsController < ApplicationController
 	def index
-		@genres = Genre.all
+		@genres = Genre.where(status: "1")
 		# urlにgenre_idがある場合
 		if params[:genre_id]
 			@genre = Genre.find(params[:genre_id])
@@ -16,6 +16,6 @@ class Public::ProductsController < ApplicationController
 	def show
 		@product = Product.find(params[:id])
 		@cart = CartItem.new
-		@genres = Genre.all
+		@genres = Genre.where(status: "1")
 	end
 end

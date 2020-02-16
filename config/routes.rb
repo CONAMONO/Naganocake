@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   	resources :products, only: [:index,:create,:show,:new,:edit,:update]
   	resources :orders, only: [:index,:show,:update]
   	get "top"  => "orders#top"
+    patch "/order_products/:id" => "order_products#update"
   end
 
   namespace :public do
@@ -30,7 +31,7 @@ Rails.application.routes.draw do
 	resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
 	resources :cart_items, only: [:create, :index, :update, :destroy]
 	delete "/cart_items"  => "cart_items#destroy"
-	get "about" => "order#about"
+	get "/about" => "orders#about",as: 'orders_about'
   end
 	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
