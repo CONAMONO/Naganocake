@@ -10,22 +10,48 @@
 	<div class = "row">
 		<div class ="col-xs-2"></div>
 			<div class ="col-xs-4">
-				<%= form_for(@user, url:admin_user_path(@user.id)) do |f| %>
-				<p>顧客ID<%= @user.id %></p>
-				<p>氏名<%= f.text_field :first_name %><%= f.text_field :last_name %></p>
-				<p>フリガナ<%= f.text_field :first_name_kata %><%= f.text_field :last_name_kata %></p>
-				<p>郵便番号<%= f.text_field :postal_code %></p>
-				<p>住所<%= f.text_field :street_address %></p>
-				<p>電話番号<%= f.text_field :phone_number %></p>
-				<p>メールアドレス<%= f.text_field :email %></p>
-				<p>会員ステータス
-					<label>
-					<%= f.radio_button :user_status, "false" %> 有効 </label>
-					<label><%= f.radio_button :user_status, "true" %> 退会済み</label>
-				</p>
+				<table class = "table line" >
+					<%= form_for(@user, url:admin_user_path(@user.id)) do |f| %>
+					<tbody>
+						<tr>
+							<th class = "line">顧客ID</th>
+							<td class = "line"><%= @user.id %></td>
+						</tr>
+						<tr>
+							<th class = "line">氏名</th>
+							<td class = "line"><%= f.text_field :first_name %><%= f.text_field :last_name %></td>
+						</tr>
+						<tr>
+							<th class = "line">フリガナ</th>
+							<td class = "line"><%= f.text_field :first_name_kata %><%= f.text_field :last_name_kata %></td>
+						</tr>
+						<tr>
+							<th class = "line">郵便番号</th>
+							<td class = "line"><%= f.text_field :postal_code %></td>
+						</tr>
+						<tr>
+							<th class = "line">住所</th>
+							<td class = "line"><%= f.text_field :street_address %></td>
+						</tr>
+						<tr>
+							<th class = "line">電話番号</th>
+							<td class = "line"><%= f.text_field :phone_number %></td>
+						</tr>
+						<tr>
+							<th class = "line">メールアドレス</th>
+							<td class = "line"><%= f.text_field :email %></td>
+						</tr>
+						<tr>
+							<th class = "line">会員ステータス</th>
+							<td class = "line"><label>
+							<%= f.radio_button :user_status, "false" %> 有効 </label>
+							<label><%= f.radio_button :user_status, "true" %> 退会済み</label></td>
+						</tr>
+					</tbody>
+				</table>
 				<button type="submit" class="btn btn-primary">変更を保存する</button>
-		        <% end %>
+	        	<% end %>
 			</div>
-		<div class ="col-xs-6"></div>
+		<div class ="col-xs-4"></div>
 	</div>
 </div>

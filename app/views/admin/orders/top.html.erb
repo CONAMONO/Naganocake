@@ -1,11 +1,17 @@
-<!-- ヘッダーを反映 -->
-<section>
-	<h2>管理者画面</h2>
-</section>
-<div>
-	<p>本日の注文件数</p>
-</div>
-<div>
-	<!-- User側の注文件数を反映させる -->
-	<p>X件</p>
+<div class="container">
+	<div class="row">
+		<section>
+			<h2>管理者画面</h2>
+		</section>
+	</div>
+	<div class="row" style="margin-top:50px">
+		<div class="col-sm-3" style="font-size:20px">
+			<p class=>本日の注文件数</p>
+		</div>
+		<div class="col-sm-9 pull-left" style="font-size:20px">
+			<%= link_to admin_orders_path do %>
+			<%= @today_order.count %>
+			<% end %>件
+		</div>
+	</div>
 </div>

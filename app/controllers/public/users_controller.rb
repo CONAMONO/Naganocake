@@ -12,6 +12,8 @@ class Public::UsersController < ApplicationController
 		#flash[:success] = 'You have updated user successfully.'
 		if user.update(user_params)
 			if user.user_status == true
+				#redirect_to controller: 'devise/sessions', action: 'destroy'
+				#redirect_to destroy_user_session_path
 				redirect_to root_path
 			else
 				redirect_to public_users_path

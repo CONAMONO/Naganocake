@@ -1,11 +1,11 @@
 class Public::OrdersController < ApplicationController
-
+	
+	
 	def top
 		@products = Product.all
 		@products_count = Product.select("id").count
 		@product_name = Product.select("name")
 		@product_price = Product.select("non_taxed_price")
-		@genres = Genre.all
 	end
 
 	def new
@@ -14,12 +14,11 @@ class Public::OrdersController < ApplicationController
 		@shipping_addresses = current_user.shipping_addresses.all
 		@user = User.find(current_user.id)
 	end
-  
+
+	
 	def index
 		@user = User.find(current_user.id)
 	  	@orders = @user.orders
-	  	@order_products = OrderProduct.all
-	  	@products = Product.all
 	end
   
 	def show
@@ -36,9 +35,21 @@ class Public::OrdersController < ApplicationController
       #order.pay = 800
       #order.total = @total
 
+      if params[:order][:address_id] == "3"
+		  @shipping_address = ShippingAddress.new
+		  @shipping_address.user_id = current_user.id
+		  @shipping_address.name_address = params[:order][:name_address]
+		  @shipping_address.street_address = params[:order][:street_address]
+		  @shipping_address.postal_code = params[:order][:postal_code]
+
+		  if @shipping_address.save == false
+			render action: :confirm
+			return
+		  end
+	  end
+
       if order.save == true
       	#flash[:success] = 'You have creatad book successfully.'
-
 		@cart_items.each do |cart_item|
 			order_product = OrderProduct.new
 			order_product.product_count = cart_item.quantity
@@ -53,6 +64,7 @@ class Public::OrdersController < ApplicationController
 				return
 			end
 		end
+
 		@cart_items.destroy_all
 
         redirect_to public_orders_thanks_path and return
@@ -62,12 +74,13 @@ class Public::OrdersController < ApplicationController
 		@order = Order.new
 		@user = User.find(current_user.id)
 		@shipping_addresses = current_user.shipping_addresses.all
-		@payment_method = params[:payment_method]
-		@address_id = params[:address_id]
-		@select_addr = params[:select_addr]
-		@new_postal_code = params[:new_postal_code]
-		@new_street_address = params[:new_street_address]
-		@new_name = params[:new_name]
+		@shipping_address = ShippingAddress.new
+		@payment_method = params[:order][:order][:payment_method]
+		@address_id = params[:order][:address_id]
+		@select_addr = params[:order][:select_addr]
+		@new_postal_code = params[:order][:postal_code]
+		@new_street_address = params[:order][:street_address]
+		@new_name = params[:order][:name_address]
         render action: :confirm
       end
 	end
@@ -78,6 +91,7 @@ class Public::OrdersController < ApplicationController
 		@order = Order.new
 		@user = User.find(current_user.id)
 		@shipping_addresses = current_user.shipping_addresses.all
+		@shipping_address = ShippingAddress.new
 		@payment_method = params[:payment_method]
 		@address_id = params[:address_id]
 		@select_addr = params[:select_addr]
@@ -99,4 +113,8 @@ class Public::OrdersController < ApplicationController
     	added_attrs = [:product_count, :taxed_price, :production_status, :order_id, :product_id]
         params.require(:order).permit(added_attrs)
     end
+
+	def shipping_address_params
+		params.require(:shipping_address).permit(:name_address, :street_address,:postal_code)
+	end
 end

@@ -2,79 +2,101 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="">
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<link rel="stylesheet" href="cart_items.scss">
 	<title>カート</title>
 </head>
 <body>
 	<% @total = 0 %>
 	<% @tax = 1.10 %>
 	<%= @error %>
-	<div>
-		<h3>ショッピングカート</h3>
-		<%#= link_to "カートを空にする", public_cart_item_path, method: :delete %>
-		<%= link_to "カートを空にする", '/public/cart_items/destroy', method: :delete, class: "btn btn-default"  %>
+	<div class="container cart_title">
+		<div class="row">
+			<div class="col-xs-10">
+				<h3>ショッピングカート</h3>
+			</div>
+			<div class="col-xs-2">
+				<%#= link_to "カートを空にする", public_cart_item_path, method: :delete %>
+				<%= link_to "カートを空にする", '/public/cart_items/destroy', method: :delete, class: "btn btn-default btn-danger"  %>
+			</div>
+		</div>
 	</div>
 
 	<div>
-		<div>
-			<table>
-				<thead>
-					<tr>
-						<th>商品名</th>
-						<th>単価</th>
-						<th>数量</th>
-						<th>小計</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<% @cart_items.each do |cart_item| %>
-						<%= form_for(cart_item, url: public_cart_item_path(cart_item.id)) do |f| %>
-							<tr>
-								<td>
-									<%= attachment_image_tag cart_item.product, :image, :fill, 300, 300, format: 'jpeg' %>
-									<%= cart_item.product.name %>
-								</td>
-								<td>
-									<%= (cart_item.product.non_taxed_price * @tax).floor %>
-								</td>
-								<td>
-									<%# @cart_item = cart_item %>
-									<%= f.text_field :quantity, value: cart_item.quantity %>
-									<%= f.submit '変更', class: "btn btn-default" %>
-								</td>
-								<td>
-									<%= ((cart_item.product.non_taxed_price * @tax) * cart_item.quantity).floor %>
-									<%# binding.pry %>
-									<% @total += ((cart_item.product.non_taxed_price * @tax) * cart_item.quantity).floor  %>
-								</td>
-								<td>
-									<%#= link_to "Destroy", public_cart_item(cart_item.id), method: :delete, "data-confirm" => "本当に消しますか？" %>
-									<%= link_to "削除する", public_cart_item_path(cart_item.id), method: :delete, class: "btn btn-default"  %>
-								</td>
-							<% end %>
+		<div class="container">
+			<div class="row">
+				<table class="table table-bordered">
+					<thead>
+						<tr class="active">
+							<th class="col-xs-4">商品名</th>
+							<th class="col-xs-1">単価</th>
+							<th class="col-xs-4">数量</th>
+							<th class="col-xs-1">小計</th>
+							<th class="col-xs-1"></th>
 						</tr>
-					<% end %>
-				</tbody>
-			</table>
-
-			<div>
-				<%= link_to '買い物を続ける', root_path, class: "btn btn-default" %>
-				<table>
+					</thead>
 					<tbody>
-						<tr>
-							<td>合計金額</td>
-							<td><%= @total %></td>
-						</tr>
+						<% @cart_items.each do |cart_item| %>
+							<%= form_for(cart_item, url: public_cart_item_path(cart_item.id)) do |f| %>
+								<tr>
+									<td>
+										<%= attachment_image_tag cart_item.product, :image, :fill, 300, 300, format: 'jpeg' %>
+										<%= cart_item.product.name %>
+									</td>
+									<td>
+										<%= number_to_currency((cart_item.product.non_taxed_price * @tax).floor, :unit => "", :precision =>0) %>
+									</td>
+									<td>
+										<%# @cart_item = cart_item %>
+										<%= f.text_field :quantity, value: cart_item.quantity %>
+										<%= f.submit '変更', class: "btn btn-default btn-primary" %>
+									</td>
+									<td>
+										<%= number_to_currency(((cart_item.product.non_taxed_price * @tax) * cart_item.quantity).floor, :unit => "", :precision =>0)  %>
+										<%# binding.pry %>
+										<% @total += ((cart_item.product.non_taxed_price * @tax) * cart_item.quantity).floor  %>
+									</td>
+									<td>
+										<%#= link_to "Destroy", public_cart_item(cart_item.id), method: :delete, "data-confirm" => "本当に消しますか？" %>
+										<%= link_to "削除する", public_cart_item_path(cart_item.id), method: :delete, class: "btn btn-default btn-danger"  %>
+									</td>
+								</tr>
+							<% end %>
+						<% end %>
 					</tbody>
 				</table>
 			</div>
+		</div>
 
-			<div>
-				<%= link_to '情報入力に進む', new_public_order_path, class: "btn btn-default" %>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-8">
+					<%= link_to '買い物を続ける', root_path, class: "btn btn-default btn-primary" %>
+				</div>
+				<div class="col-xs-4">
+					<table class="table table-bordered">
+						<tbody>
+							<tr>
+								<td class="active">合計金額</td>
+								<td><%= number_to_currency(@total, :unit => "", :precision =>0)  %></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
+		</div>
 
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-3"></div>
+				<div class="col-xs-6 goto_input_info">
+					<%= link_to '情報入力に進む', new_public_order_path, class: "goto_input_info btn btn-default btn-primary btn-lg" %>
+				</div>
+				<div class="col-xs-3"></div>
+			</div>
 		</div>
 	</div>
+
+	<footer></footer>
 </body>
 </html>
