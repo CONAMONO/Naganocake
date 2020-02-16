@@ -79,11 +79,3 @@ CartItem.create(
 # 	postal_code: "234-5678",
 # 	user_id: 1
 # 	)
-
-
-# ShippingAddress.create(
-# 	name_address: "宛先　ベルモンド",
-# 	street_address: "テスト県テスト市7-8-9",
-# 	postal_code: "345-6789",
-# 	user_id: 1
-# 	)
