@@ -1,39 +1,47 @@
 <div class= "container-fluid">
 	<div class ="row">
-		<div class ="col-xs-3">
-			<div class ="text-right">
+		<div class ="col-xs-1"></div>
+		<div class ="col-xs-6">
+			<table class = "table line" >
 				<h2>注文詳細画面</h2>
-			</div>
+				<%= form_for(@order, url:admin_order_path(@order.id)) do |f| %>
+					<tbody>
+						<tr>
+							<th class = "line" style="width:20%">購入者</th>
+							<%= link_to admin_user_path do %>
+							<td class = "line"><%= @order.name_address %></td><% end %>
+						</tr>
+						<tr>
+							<th class = "line">配送先</th>
+							<td class = "line"><%=  "〒" +@order.postal_code %><%= @order.street_address %><br><%= @order.name_address %></td>
+						</tr>
+						<tr>
+							<th class = "line">支払い方法</th>
+							<td class = "line"><%= @order.payment_method %></td>
+						</tr>
+						<tr>
+							<th class = "line">注文ステータス</th>
+							<td class = "line"><%= f.select :order_status, ['入金待ち', '入金確認', '製作中', '発送準備中', '発送済み'] %></strong>
+							<%= f.submit "更新", class: "btn btn-primary" %></td>
+						</tr>
+					</tbody>
+				<% end %>
+			</table>
 		</div>
-		<div class ="col-xs-9"></div>
+		<div class ="col-xs-5"></div>
 	</div>
 	<div class = "row">
-		<div class ="col-xs-8">
-			<%= form_for(@order, url:admin_order_path(@order.id)) do |f| %>
-			<div>
-				<%= link_to admin_user_path do %>
-				<strong>購入者<%= @order.name_address %></strong>
-				<% end %>
-			</div>
-			<div>
-				<strong>配送先<%= @order.street_address %></strong>
-			</div>
-			<div>
-				<strong>支払い方法<%= @order.payment_method %></strong>
-			</div>
-				<div>
-				<strong>注文ステータス<%= f.select :order_status, ['入金待ち', '入金確認', '製作中', '発送準備中', '発送済み'] %></strong>
-				<%= f.submit "更新", class: "btn btn-primary" %>
-			</div>
-			<% end %>
+		<div class ="col-xs-1"></div>
+		<div class ="col-xs-7">
 			<table class ="table">
 				<thead>
 					<tr class = "active">
-						<th>商品名</th>
-						<th>単価（税込み）</th>
-						<th>数量</th>
-						<th>小計</th>
-						<th>製作ステータス</th>
+						<th style="width:30%">商品名</th>
+						<th style="width:15%">単価（税込）</th>
+						<th style="width:15%">数量</th>
+						<th style="width:15%">小計</th>
+						<th style="width:15%">製作ステータス</th>
+						<th style="width:10%"></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -44,23 +52,32 @@
 						<td><%= order_product.taxed_price %></td>
 						<td><%= order_product.product_count %></td>
 						<td><%= order_product.taxed_price %></td>
-						<td><%= f.select :production_status, ['着手不可', '製作待ち', '製作中', '製作完了'] %><%= f.submit "更新", class: "btn btn-primary" %></td>
+						<td><%= f.select :production_status, ['着手不可', '製作待ち', '製作中', '製作完了'] %></td>
+						<td><%= f.submit "更新", class: "btn btn-primary" %></td>
 					</tr>
 					<% end %>
 					<% end %>
 				</tbody>
 			</table>
 		</div>
-		<div class ="col-xs-4">
-			<div>
-				<strong>合計料金<%= @order.total_price %>円</strong>
-			</div>
-			<div>
-				<strong>送料<%= @order.pay%>円</strong>
-			</div>
-			<div>
-				<strong>送金金額合計<%= @order.pay + @order.total_price %>円</strong>
-			</div>
+		<div class ="col-xs-3">
+			<table class ="table">
+				<tbody>
+					<tr>
+						<th class = "line" style="width:40%">合計料金</th>
+						<td class = "line"><%= @order.total_price %>円</td>
+					</tr>
+					<tr>
+						<th class = "line">送料</th>
+						<td class = "line"><%= @order.pay%>円</td>
+					</tr>
+					<tr>
+						<th class = "line">請求金額合計</th>
+						<th class = "line"><%= @order.pay + @order.total_price %>円</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
+		<div class ="col-xs-1"></div>
 	</div>
 </div>
