@@ -1,73 +1,73 @@
-<dev>
-  <h2 class="head_message">会員登録</h2>
-</dev>
+<div class="panel panel-default">
+  <dev class="panel-heading">
+    <h2 class="head_message">会員登録</h2>
+  </dev>
 
-<div>
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="panel-body">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="field">
-      <%= f.label "姓" %>
-      <%= f.text_field :first_name, autofocus: true, autocomplete: "first-name" %>
-    </div>
+      <div class="field">
+        <%= f.label "姓" %>
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first-name" %>
+      </div>
 
-    <div class="field">
-      <%= f.label "カナ姓" %>
-      <%= f.text_field :first_name_kata, autofocus: true, autocomplete: "first-name-kata" %>
-    </div>
+      <div class="field">
+        <%= f.label "カナ姓" %>
+        <%= f.text_field :first_name_kata, autofocus: true, autocomplete: "first-name-kata" %>
+      </div>
 
-    <div class="field">
-      <%= f.label "名" %>
-      <%= f.text_field :last_name, autofocus: true, autocomplete: "last-name" %>
-    </div>
+      <div class="field">
+        <%= f.label "名" %>
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "last-name" %>
+      </div>
 
-    <div class="field">
-      <%= f.label "カナ名" %>
-      <%= f.text_field :last_name_kata, autofocus: true, autocomplete: "last-name-kata" %>
-    </div>
+      <div class="field">
+        <%= f.label "カナ名" %>
+        <%= f.text_field :last_name_kata, autofocus: true, autocomplete: "last-name-kata" %>
+      </div>
 
-    <div class="field">
-      <%= f.label "郵便番号" %>
-      <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal-code" %>
-    </div>
+      <div class="field">
+        <%= f.label "郵便番号" %>
+        <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal-code" %>
+      </div>
 
-    <div class="field">
-      <%= f.label "住所" %>
-      <%= f.text_area :street_address, autofocus: true, autocomplete: "street-address" %>
-    </div>
+      <div class="field">
+        <%= f.label "住所" %>
+        <%= f.text_area :street_address, autofocus: true, autocomplete: "street-address" %>
+      </div>
 
-    <div class="field">
-      <%= f.label "電話番号" %>
-      <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone-number" %>
-    </div>
+      <div class="field">
+        <%= f.label "電話番号" %>
+        <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone-number" %>
+      </div>
 
-    <div class="field">
-      <%= f.label "メールアドレス" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
+      <div class="field">
+        <%= f.label "メールアドレス" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
 
-    <div class="field">
-      <%= f.label "パスワード" %>
-      <% if @minimum_password_length %>
-      <!--<em>(<%= @minimum_password_length %> characters minimum)</em>-->
-      <% end %>
-      <%= f.password_field :password, autocomplete: "new-password" %>
-    </div>
+      <div class="field">
+        <%= f.label "パスワード" %>
+        <% if @minimum_password_length %>
+        <!--<em>(<%= @minimum_password_length %> characters minimum)</em>-->
+        <% end %>
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
 
-    <!--<div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>-->
+      <!--<div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>-->
 
-    <%= f.hidden_field :user_status, :value => false %>
+      <%= f.hidden_field :user_status, :value => false %>
 
-    <div class="actions">
-      <%= f.submit "Sign up" %>
-    </div>
+      <div class="actions panel-footer">
+        <%= f.submit "Sign up" %>
+      </div>
+    <% end %>
 
+    <%= render "users/shared/links" %>
 
-  <% end %>
-
-  <%= render "users/shared/links" %>
-
+  </div>
 </div>
