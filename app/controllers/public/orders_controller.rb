@@ -1,8 +1,8 @@
 class Public::OrdersController < ApplicationController
-	
+	PER = 8
 	
 	def top
-		@products = Product.all
+		@products = Product.page(params[:page]).per(PER)
 		@products_count = Product.select("id").count
 		@product_name = Product.select("name")
 		@product_price = Product.select("non_taxed_price")
