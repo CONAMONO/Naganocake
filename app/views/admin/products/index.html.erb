@@ -1,12 +1,14 @@
 <div class="container">
-		<div class=row visible-sm-inline-block>
-			<section>
+		<div class="row" style="display:flex">
+			<section style="width:90%">
 				<h2>商品一覧画面</h2>
 			</section>
-			<%= link_to "",new_admin_product_path, class:"btn btn-default glyphicon glyphicon-plus" %>
+				<span class="pull-right" style="margin:20px 0px 0px">
+					<%= link_to "",new_admin_product_path, class:"btn btn-default glyphicon glyphicon-plus" %>
+				</span>
 		</div>
-	<div class="row">
-		<table class="table table-striped">
+	<div class="row" style="margin:20px 0px 20px">
+		<table class="table table-striped" style="width:90%;margin:0 auto">
 			<thead class="table-bordered">
 				<tr>
 					<th>商品ID</th>
