@@ -10,11 +10,11 @@
 	<div class = "row">
 		<div class ="col-xs-2"></div>
 			<div class ="col-xs-4">
-				<table class = "table">
+				<table class = "table line" >
 					<tbody>
 						<tr>
-							<th>顧客ID</th>
-							<td><%= @user.id %>
+							<th class = "line">顧客ID</th>
+							<td class = "line"><%= @user.id %>
 								<% if @user.user_status == false %>
 								<span class="label label-info">有効会員</span>
 								<% else %>
@@ -22,32 +22,28 @@
 								<% end %></td>
 						</tr>
 						<tr>
-							<th>氏名</th>
-							<td><%= @user.first_name %><%= @user.last_name %></td>
+							<th class = "line">氏名</th>
+							<td class = "line"><%= @user.first_name %><%= @user.last_name %></td>
 						</tr>
 						<tr>
-							<th>フリガナ</th>
-							<td><%= @user.first_name_kata %><%= @user.last_name_kata %></td>
+							<th class = "line">フリガナ</th>
+							<td class = "line"><%= @user.first_name_kata %><%= @user.last_name_kata %></td>
 						</tr>
 						<tr>
-							<th>郵便番号</th>
-							<td><%= @user.postal_code %></td>
+							<th class = "line">郵便番号</th>
+							<td class = "line"><%= @user.postal_code %></td>
 						</tr>
 						<tr>
-							<th>住所</th>
-							<td><%= @user.street_address %></td>
+							<th class = "line">住所</th>
+							<td class = "line"><%= @user.street_address %></td>
 						</tr>
 						<tr>
-							<th>電話番号</th>
-							<td><%= @user.phone_number %></td>
+							<th class = "line">電話番号</th>
+							<td class = "line"><%= @user.phone_number %></td>
 						</tr>
 						<tr>
-							<th>メールアドレス</th>
-							<td><%= @user.email %></td>
-						</tr>
-						<tr>
-							<th>電話番号</th>
-							<td><%= @user.phone_number %></td>
+							<th class = "line">メールアドレス</th>
+							<td class = "line"><%= @user.email %></td>
 						</tr>
 					</tbody>
 				</table>
@@ -58,7 +54,7 @@
 		    		<div type="button" class="btn btn-primary">注文履歴一覧を見る</div>
 		    	<% end %>
 			</div>
-		<div class ="col-xs-6"></div>
+		<div class ="col-xs-4"></div>
 	</div>
 </div>
 
