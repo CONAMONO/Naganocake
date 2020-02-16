@@ -65,7 +65,7 @@ class Public::OrdersController < ApplicationController
 			end
 		end
 
-		#@cart_items.destroy_all
+		@cart_items.destroy_all
 
         redirect_to public_orders_thanks_path and return
       else
