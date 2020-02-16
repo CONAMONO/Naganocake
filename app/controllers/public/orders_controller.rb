@@ -6,6 +6,7 @@ class Public::OrdersController < ApplicationController
 		@products_count = Product.select("id").count
 		@product_name = Product.select("name")
 		@product_price = Product.select("non_taxed_price")
+		@genres = Genre.all
 	end
 
 	def new
@@ -19,6 +20,8 @@ class Public::OrdersController < ApplicationController
 	def index
 		@user = User.find(current_user.id)
 	  	@orders = @user.orders
+	  	@order_products = OrderProduct.all
+	  	@products = Product.all
 	end
   
 	def show
