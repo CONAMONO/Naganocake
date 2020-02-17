@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse" style="margin: 0">
       <div class="container">
         <% if user_signed_in? %>
         <div class="navbar-header">
@@ -17,16 +17,16 @@
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li><%= link_to public_cart_items_path do %>
-              <span class="glyphicon "> カート</span>
+              <span> カート</span>
               <% end %></li>
             <li><%= link_to public_users_path do %>
-              <span class="glyphicon "> マイページ</span>
+              <span> マイページ</span>
             <% end %></li>
             <li><%= link_to public_orders_about_path do %>
-              <span class="glyphicon "> アバウトページ</span>
+              <span> アバウトページ</span>
             <% end %></li>
             <li><%= link_to destroy_user_session_path, method: :delete do %>
-              <span class="glyphicon "> ログアウト</span>
+              <span> ログアウト</span>
             <% end %></li>
         </ul>
         <% elsif admin_signed_in? %>
@@ -35,22 +35,22 @@
         </div>
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to  do %>
-            <span class="glyphicon "> ユーザー名</span>
+            <span> ユーザー名</span>
             <% end %></li>
           <li><%= link_to admin_products_path do %>
-            <span class="glyphicon "> 商品一覧</span>
+            <span> 商品一覧</span>
           <% end %></li>
           <li><%= link_to admin_users_path do %>
-            <span class="glyphicon "> 会員一覧</span>
+            <span> 会員一覧</span>
           <% end %></li>
           <li><%= link_to admin_orders_path do %>
-            <span class="glyphicon "> 注文履歴一覧</span>
+            <span> 注文履歴一覧</span>
           <% end %></li>
           <li><%= link_to admin_genres_path do %>
-            <span class="glyphicon "> ジャンル一覧</span>
+            <span> ジャンル一覧</span>
             <% end %></li>
           <li><%= link_to destroy_admin_session_path, method: :delete do %>
-            <span class="glyphicon "> ログアウト</span>
+            <span> ログアウト</span>
           <% end %></li><br>
           <form class="navbar-form navbar-left pull-right" role="search">
           <div class="form-group">
@@ -65,10 +65,10 @@
         </div>
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to new_user_session_path do %>
-                <span class="glyphicon "> 顧客ログイン</span>
+                <span > 顧客ログイン</span>
               <% end %></li>
           <li><%= link_to new_admin_session_path do %>
-                <span class="glyphicon "> 管理者ログイン</span>
+                <span> 管理者ログイン</span>
               <% end %></li>
         </ul>
         <% end %>
