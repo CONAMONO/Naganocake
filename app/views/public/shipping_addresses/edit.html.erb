@@ -1,29 +1,31 @@
-<container>
-	<div class="row">
+<div class="cover">
+	<div class="container">
+		<div class="row">
 
-		<div class="col-md-9">
-			<h4>配送先編集</h4>
-			<%= form_for [:public, @shipping_addresses] do |edit| %>
-				<ul>
-					<thead>
-						<tr>
-							<th>郵便番号</th>
-							<th>住所</th>
-							<th>宛名</th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td> <%= edit.text_field :postal_code %> </td>
-							<td> <%= edit.text_field :street_address %> </td>
-							<td> <%= edit.text_field :name_address %> </td>
-							<td> <%= edit.submit "編集する", class: "btn btn-primary" %> </td>
-						</tr>
-					</tbody>
-				</ul>
-			<% end %>
+			<div class="col-md-9">
+				<h4>配送先編集</h4>
+				<%= form_for [:public, @shipping_addresses] do |edit| %>
+					<ul>
+						<thead>
+							<tr>
+								<th>郵便番号</th>
+								<th>住所</th>
+								<th>宛名</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td> <%= edit.text_field :postal_code %> </td>
+								<td> <%= edit.text_field :street_address %> </td>
+								<td> <%= edit.text_field :name_address %> </td>
+								<td> <%= edit.submit "編集する", class: "btn btn-primary" %> </td>
+							</tr>
+						</tbody>
+					</ul>
+				<% end %>
+			</div>
+
 		</div>
-
 	</div>
-</container>
+</div>

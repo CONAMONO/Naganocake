@@ -1,55 +1,57 @@
-<container>
-	<div class="row">
-		<div class="col-xs-10">
-			<%= form_for [:public, @shipping_address] do |sh_address| %>
+<div class="cover">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-10">
+				<%= form_for [:public, @shipping_address] do |sh_address| %>
 
-			<table class="form-inline">
-				<thead>
-					<tr>
-						<th class="list-group-item-info">郵便番号</th>
-						<th class="list-group-item-info">住所</th>
-						<th class="list-group-item-info">宛名</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td><%= sh_address.text_field :postal_code %></td>
-						<td><%= sh_address.text_field :street_address %></td>
-						<td><%= sh_address.text_field :name_address %></td>
-					</tr>
-				</tbody>
-			</table>
-				<div>
-				<%= sh_address.submit '登録', class: "btn btn-info" %>
-			<% end %>
+				<table class="form-inline">
+					<thead>
+						<tr>
+							<th class="list-group-item-info">郵便番号</th>
+							<th class="list-group-item-info">住所</th>
+							<th class="list-group-item-info">宛名</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><%= sh_address.text_field :postal_code %></td>
+							<td><%= sh_address.text_field :street_address %></td>
+							<td><%= sh_address.text_field :name_address %></td>
+						</tr>
+					</tbody>
+				</table>
+					<div>
+					<%= sh_address.submit '登録', class: "btn btn-info" %>
+				<% end %>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-10">
+				<table class="table-bordered">
+					<thead>
+						<tr>
+							<th class="active">郵便番号</th>
+							<th class="active">住所</th>
+							<th class="active">宛名</th>
+							<th class="active"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @sh_addresses.each do |index| %>
+						<tr>
+							<td><%= index.postal_code %></td>
+							<td><%= index.street_address %></td>
+							<td><%= index.name_address %></td>
+							<td><%= link_to "編集する", edit_public_shipping_address_path(index.id),class: "btn btn-primary" %>
+								<%= link_to "削除する", public_shipping_address_path(index.id), method: :delete, "data-confirm"=> "本当に削除しますか？", class: "btn btn-danger" %>
+							</td>
+						<% end %>
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
-
-	<div class="row">
-		<div class="col-md-10">
-			<table class="table-bordered">
-				<thead>
-					<tr>
-						<th class="active">郵便番号</th>
-						<th class="active">住所</th>
-						<th class="active">宛名</th>
-						<th class="active"></th>
-					</tr>
-				</thead>
-				<tbody>
-					<% @sh_addresses.each do |index| %>
-					<tr>
-						<td><%= index.postal_code %></td>
-						<td><%= index.street_address %></td>
-						<td><%= index.name_address %></td>
-						<td><%= link_to "編集する", edit_public_shipping_address_path(index.id),class: "btn btn-primary" %>
-							<%= link_to "削除する", public_shipping_address_path(index.id), method: :delete, "data-confirm"=> "本当に削除しますか？", class: "btn btn-danger" %>
-						</td>
-					<% end %>
-					</tr>
-
-				</tbody>
-			</table>
-		</div>
-	</div>
-</container>
+</div>
