@@ -1,25 +1,17 @@
 <div class = "container">
-  <div class = "row">
-    <div class = "col-xs-4"></div>
+  <div class = "row" style="margin-top:100px">
+    <div class = "col-xs-3"></div>
     <div class = "col-xs-4">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <p>メールアドレス</p><%= f.email_field :email, autofocus: true,autocomplete: "メールアドレス" %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-        <p>パスワード</p><%= f.password_field :password, autocomplete: "パスワード" %>
+          <p class = "text-right" >メールアドレス<%= f.email_field :email, autofocus: true,autocomplete: "メールアドレス", :size => "30"  %></p>
 
-      <% if devise_mapping.rememberable? %>
-        <div class="field">
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
+          <p class = "text-right" >パスワード<%= f.password_field :password, autocomplete: "パスワード", :size => "30" %></p>
+
+        <div class="actions text-center">
+          <button type="submit" class="btn btn-primary">ログイン</button>
         </div>
       <% end %>
-
-      <div class="actions">
-        <button type="submit" class="btn btn-primary btn-block">ログイン</button>
-      </div>
-    <% end %>
-
-    <%= render "admins/shared/links" %>
-  </div>
-  <div class = "col-xs-4"></div>
+    </div>
+  <div class = "col-xs-5"></div>
 </div>

@@ -1,8 +1,8 @@
-<div class="col-xs-2" style="margin: 6px">
-	<ul class="list-group h5" style="border:2px solid black">
-		<li class="list-group-item-text text-center" style="border-bottom:2px solid black">ジャンル検索</li>
+<div class="col-xs-2" style="margin: 6px;">
+	<ul class="list-group h5" style="border:2px solid white">
+		<li class="list-group-item-text text-center" style="border-bottom:2px solid white"><strong>ジャンル検索</strong></li>
 		<% genres.each do |genres| %>
-		<li class="list-group " style="font-size: large"><%= link_to genres.name, public_products_path(genre_id: genres.id) %></li>
+		<li class="list-group " style="font-size: 2em; margin: 15px;"><%= link_to genres.name, public_products_path(genre_id: genres.id) %></li>
 		<% end %>
 	</ul>
 </div>
