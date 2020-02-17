@@ -7,7 +7,30 @@
 	<%= form_for @product, url:admin_product_path do |f| %>
 		<div class=row>
 			<div class="col-sm-3">
-				<%= f.attachment_field :image %>
+				<%= f.attachment_field :image, id: :product_img %>
+				<!-- デフォルトで既存の画像を表示＆変更の場合は変更後の画像を表示 -->
+				<% if @product.image.present? %>
+					<%= image_tag @product.image_url, id: :img_prev %>
+				<% else %>
+					<%= attachment_image_tag @product, :image %>
+				<% end %>
+				<!-- 投稿画像を選択した時に、投稿画像を読み込み＆反映 -->
+				<script type="text/javascript">
+					$(function(){
+						function readURL(input){
+							if(input.files && input.files[0]){
+								var reader = new FileReader();
+								reader.onload = function(e){
+									$('#img_prev').attr('src',e.target.result);
+								}
+								reader.readAsDataURL(input.files[0]);
+							}
+						}
+						$("#product_img").change(function(){
+							readURL(this);
+						});
+					});
+				</script>
 			</div>
 			<div class="col-sm-6">
 				<table class="table line" style="width:60%">

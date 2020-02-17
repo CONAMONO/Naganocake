@@ -4,21 +4,22 @@
 
 #product_img{
 	margin-top:10px;
+	font-size:12px;
 }
 
 #img_prev{
-  margin-top: 20px;
-  padding: 5px 8px;
-  border: solid 1px black;
+  margin-top: 15px;
+  padding: 5px 10px;
+  border: dotted 1px black;
   color: #666;
   position: relative;
   padding: 0;
   border-radius: 5px;
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   background-color: #fff;
   box-sizing: border-box;
   transition: 0.3s ease-out;
