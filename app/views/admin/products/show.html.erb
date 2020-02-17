@@ -6,25 +6,41 @@
 	</div>
 	<div class="row">
 		<% @tax = 1.1 %>
-		<div class="col-sm-3">
+		<div class="col-sm-4">
 			<%= attachment_image_tag @product, :image, :fill,200,200 %><br />
 		</div>
-		<div class="col-sm-6">
-			<label>商品名</label>
-				<%= @product.name %><br />
-			<label>商品説明</label>
-				<%= @product.explain %><br />
-			<label>ジャンル</label>
-				<%= @product.genre.name %><br />
-			<label>税込価格(税抜価格)</label>
-				<%= number_with_delimiter((@product.non_taxed_price*@tax).floor) %>(<%= number_with_delimiter@product.non_taxed_price %>)円<br />
-			<label>販売ステータス</label>
-				<% if @product.sale_status == true %>
-					販売中
-				<% else %>
-					売切れ
-				<% end %><br />
-			<%= link_to "編集する", edit_admin_product_path(@product.id), class: "btn btn-default" %>
+		<div class="col-sm-8">
+			<table class="table line" style="width:40%">
+				<tr>
+					<th class="line">商品名</th>
+					<td class="line"><%= @product.name %></td>
+				</tr>
+				<tr>
+					<th class="line">商品説明</th>
+					<td class="line"><%= @product.explain %></td>
+				</tr>
+				<tr>
+					<th class="line">ジャンル</th>
+					<td class="line"><%= @product.genre.name %></td>
+				</tr>
+				<tr>
+					<th class="line">税抜価格</th>
+					<td class="line"><%= number_with_delimiter((@product.non_taxed_price*@tax).floor) %>(<%= number_with_delimiter@product.non_taxed_price %>)円</td>
+				</tr>
+				<tr>
+					<th class="line">販売ステータス</th>
+					<td class="line"><% if @product.sale_status == true %>
+						販売中
+						<% else %>
+						売切れ
+						<% end %>
+					</td>
+				</tr>
+				<tr>
+					<th class="line">&nbsp;</th>
+					<td class="line"><%= link_to "編集する", edit_admin_product_path(@product.id), class: "btn btn-primary" %>
+				</tr>
+			</table>
 		</div>
 	</div>
 </div>

@@ -1,12 +1,12 @@
 class Public::OrdersController < ApplicationController
-	
+	PER = 8
 	
 	def top
-		@products = Product.all
+		@products = Product.page(params[:page]).per(PER)
 		@products_count = Product.select("id").count
 		@product_name = Product.select("name")
 		@product_price = Product.select("non_taxed_price")
-		@genres = Genre.all
+		@genres = Genre.where(status: "1")
 	end
 
 	def new
@@ -104,6 +104,9 @@ class Public::OrdersController < ApplicationController
 	end
 
 	def thanks
+	end
+
+	def about
 	end
 
     private

@@ -1,26 +1,40 @@
-<container>
-	<div class="row">
-		<%= render "layouts/genre_bar", genres: @genres %>
-		<div class="col-md-9">
-			<div>
-				<%= attachment_image_tag @product, :image, size: "300x300" %>
-				<%= @product.name %>
-				<%= @product.explain %>
-				<%= (@product.non_taxed_price*1.1).floor.to_s + "円" %>
+<div class="cover">
+	<div class="container">
+		<div class="row">
+			<%= render "layouts/genre_bar", genres: @genres %>
+			<div class="col-xs-9 pull-left" style="margin: 15px;">
+				<div>
+					<div class="pull-left" style="margin: 0px 15px;">
+						<%= attachment_image_tag @product, :image, size: "300x300" %>
+					</div>
+					<div style="margin: 0px 15px;">
+						<h2> <%= @product.name %> </h2><br>
+						<h4><%= @product.explain %></h4><br>
+						<h3 style="font-size: 2em;">
+							<%= (@product.non_taxed_price*1.1).floor.to_s + "円" %>
+							<span style="font-size: small;">(税込み)</span>
+						</h3>
+					</div><br>
+					<div style="margin: 5px;">
+						<% if user_signed_in? %>
+							<%= form_for @cart, url:public_cart_items_path, method: :post do |add| %>
+							<%= add.label :quantity, "個数選択"  %><br>
+							<%= add.select :quantity, [1,2,3,4,5,6,7,8,9],{}, style: "width:50px" %>
+							<%= add.hidden_field :user_id, :value => current_user.id %>
+							<%= add.hidden_field :product_id, :value => @product.id %>
+						<%#= f.hidden_field :user_id, :value => @user.id %>
+							<%= add.submit "カートに入れる", class: "btn btn-primary" %>
+							<% end %>
+							<% else %>
+							<br><label style="font-size: 2em;">ショッピングを続けるには新規登録、若しくはログインしてください。</label>
+							<%= link_to new_user_registration_path do %>
+								<label style="font-size: 1.5em;">登録がお済みでない方こちら</label>
+							<% end %>
+						<% end %>
+					</div>
 
-				<% if user_signed_in? %>
-					<%= form_for @cart, url:public_cart_items_path, method: :post do |add| %>
-					<%= add.label :quantity, "個数選択"  %>
-					<%= add.select :quantity, [1,2,3,4,5,6,7,8,9]%>
-					<%= add.hidden_field :user_id, :value => current_user.id %>
-					<%= add.hidden_field :product_id, :value => @product.id %>
-				<%#= f.hidden_field :user_id, :value => @user.id %>
-					<%= add.submit "カートに入れる", class: "btn btn-primary" %>
-					<% end %>
-					<% else %>
-					<label>ショッピングを続けるには新規登録、若しくはログインしてください。</label>
-				<% end %>
+				</div>
 			</div>
 		</div>
 	</div>
-</container>
+</div>
