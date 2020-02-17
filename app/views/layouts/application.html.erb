@@ -13,7 +13,7 @@
       <div class="container">
         <% if user_signed_in? %>
         <div class="navbar-header">
-            <a class="navbar-brand">LOGO</a>
+            <%= image_tag 'logo.png', size: "150x50" %>
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li><%= link_to public_cart_items_path do %>
@@ -31,7 +31,7 @@
         </ul>
         <% elsif admin_signed_in? %>
         <div class="navbar-header">
-            <a class="navbar-brand"><%= link_to admin_top_path do %>LOGO<% end %></a>
+            <%= image_tag 'logo.png', size: "150x100" %>
         </div>
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to  do %>
@@ -61,7 +61,7 @@
         </ul>
         <% else %>
         <div class="navbar-header">
-            <a class="navbar-brand">LOGO</a>
+            <%= image_tag 'logo.png', size: "150x50" %>
         </div>
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to new_user_session_path do %>
