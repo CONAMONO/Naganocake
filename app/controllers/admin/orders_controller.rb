@@ -19,7 +19,6 @@ class Admin::OrdersController < ApplicationController
   	@order = Order.find(params[:id])
     @order_products = @order.order_products
     @products = Product.all
-    $url ="user"
   end
 
   def update
