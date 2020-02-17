@@ -46,12 +46,12 @@
 				</thead>
 				<tbody>
 					<% @order_products.each do |order_product| %>
-					<%= form_for(order_product, url:admin_path(order_product.id)) do |f| %>
+					<%= form_for(order_product, url:admin_order_product_path(order_product.id)) do |f| %>
 					<tr>
 						<td><%= order_product.product.name %></td>
 						<td><%= order_product.taxed_price %></td>
 						<td><%= order_product.product_count %></td>
-						<td><%= order_product.taxed_price %></td>
+						<td><%= order_product.taxed_price *  order_product.product_count %></td>
 						<td><%= f.select :production_status, ['着手不可', '製作待ち', '製作中', '製作完了'] %></td>
 						<td><%= f.submit "更新", class: "btn btn-primary" %></td>
 					</tr>

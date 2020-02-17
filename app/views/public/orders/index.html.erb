@@ -23,7 +23,7 @@
 							<td><% order.order_products.each do |order_product| %>
 							<%= order_product.product.name %><br>
 							<% end %></td>
-							<td><%= order.total_price %>円</td>
+							<td><%= order.total_price + order.pay %>円</td>
 							<td><%= order.order_status %></td>
 							<td><%= link_to public_order_path(order.id) do %>
 								<div type="button" class="btn btn-primary">表示する</div>

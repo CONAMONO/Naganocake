@@ -4,14 +4,22 @@ class Admin::OrdersController < ApplicationController
   end
 
   def index
-  	@orders = Order.all
     @order_products = OrderProduct.all
+    if params[:link] == "top"
+    @orders = Order.where(created_at: Time.now.all_day)
+    elsif :link == "user"
+       @user = User.find(params[:user_id])
+       @orders = @user.orders
+    else
+    	@orders = Order.all
+    end
   end
 
   def show
   	@order = Order.find(params[:id])
     @order_products = @order.order_products
     @products = Product.all
+    $url ="user"
   end
 
   def update
@@ -28,7 +36,7 @@ class Admin::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:user_id,:order_day,:total_price,:pay,:name_address,:street_address,:postal_code,:payment_method,:order_status,)
+    params.require(:order).permit(:user_id,:total_price,:pay,:name_address,:street_address,:postal_code,:payment_method,:order_status,)
   end
 
   def order_product_params
