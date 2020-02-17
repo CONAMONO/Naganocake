@@ -6,10 +6,31 @@
 	</div>
 	<div class="row"_>
 		<%= form_for [:admin, @product] do |f| %>
-<!--画像選択前にデフォルトがぞうを表示させる  -->
-<!-- 投稿する画像のプレビューを表示させる -->
 			<div class="col-sm-4">
-				<%= f.attachment_field :image, fallback:"no_image.jpg" %>
+				<%= f.attachment_field :image, id: :product_img %>
+				<!-- 投稿画像がある場合とない場合とで表示を分岐 -->
+				<% if @product.image.present? %>
+					<%= image_tag @product.image, id: :img_prev %>
+				<% else %>
+					<%= image_tag "no_image.jpg", id: :img_prev %>
+				<% end %>
+				<!-- 投稿画像を選択した時に、投稿画像を読み込み＆反映 -->
+				<script type="text/javascript">
+					$(function(){
+						function readURL(input){
+							if(input.files && input.files[0]){
+								var reader = new FileReader();
+								reader.onload = function(e){
+									$('#img_prev').attr('src',e.target.result);
+								}
+								reader.readAsDataURL(input.files[0]);
+							}
+						}
+						$("#product_img").change(function(){
+							readURL(this);
+						});
+					});
+				</script>
 			</div>
 			<div class="col-sm-8">
 				<table class="table line" style="width:40%">
