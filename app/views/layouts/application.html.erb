@@ -13,7 +13,9 @@
       <div class="container">
         <% if user_signed_in? %>
         <div class="navbar-header">
+          <%= link_to admin_top_path do %>
             <%= image_tag 'logo.png', size: "150x50" %>
+          <% end %>
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li><%= link_to public_cart_items_path do %>
@@ -31,7 +33,9 @@
         </ul>
         <% elsif admin_signed_in? %>
         <div class="navbar-header">
+          <%= link_to admin_top_path do %>
             <%= image_tag 'logo.png', size: "150x100" %>
+          <% end %>
         </div>
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to  do %>
