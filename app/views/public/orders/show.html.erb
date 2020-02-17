@@ -67,7 +67,7 @@
 						<td><%= order_product.product.name %></td>
 						<td><%= order_product.taxed_price %></td>
 						<td><%= order_product.product_count %></td>
-						<td><%= order_product.taxed_price %></td>
+						<td><%= order_product.taxed_price *  order_product.product_count %></td>
 					</tr>
 					<% end %>
 				</tbody>

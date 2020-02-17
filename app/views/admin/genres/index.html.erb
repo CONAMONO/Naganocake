@@ -15,7 +15,7 @@
 				<%= f.submit "追加", class:"btn btn-primary btn-sm" %>
 		<% end %>
 	</div>
-	<div class="row" style="margin:20px 0px 20px">
+	<div class="row" style="margin:20px 20px 0px 20px">
 		<table class="table table-striped" style="width:40%">
 			<thead>
 				<tr>
@@ -35,7 +35,7 @@
 						無効
 						<% end %>
 					</td>
-					<td><%= link_to "編集する", edit_admin_genre_path(genres.id), class:"btn btn-primary btn-sm" %> </td>
+					<td align="center"><%= link_to "編集する", edit_admin_genre_path(genres.id), class:"btn btn-primary btn-sm" %> </td>
 				</tr>
 				<% end %>
 			</tbody>

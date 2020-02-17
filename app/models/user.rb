@@ -21,4 +21,10 @@ class User < ApplicationRecord
   validates :phone_number, presence: true
   validates :user_status, inclusion: {in: [true, false]}
 
+
+  validates :postal_code,
+    length: { minimum: 7, maximum: 7 }
+  validates :phone_number,
+    length: { minimum: 11, maximum: 11 }
+
 end

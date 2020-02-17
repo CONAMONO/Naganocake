@@ -8,8 +8,8 @@
 				<div class="row">
 					<% @products.each do |products| %>
 						<% if products.genre.status == true %>
-			            	<% if products.sale_status == true %>
-								<div class="col-xs-3">
+							<% if products.sale_status == true %>
+								<div class="col-xs-3 pull-left">
 									<div>
 										<%= link_to public_product_path(products.id) do %>
 										<%= attachment_image_tag products, :image, size: "200x200" %>
@@ -21,9 +21,6 @@
 							<% end %>
 						<% end %>
 					<% end %>
-				</div>
-			</div>
-		</div>
 		<div class="row">
 			<div class="col-xs-12 col-xs-offset-6">
 				<%= paginate @products %>
