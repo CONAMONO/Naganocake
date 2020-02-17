@@ -7,7 +7,7 @@ class Admin::OrdersController < ApplicationController
     @order_products = OrderProduct.all
     if params[:link] == "top"
     @orders = Order.where(created_at: Time.now.all_day)
-    elsif :link == "user"
+    elsif params[:link] == "user"
        @user = User.find(params[:user_id])
        @orders = @user.orders
     else
