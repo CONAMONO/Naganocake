@@ -5,17 +5,19 @@
 			<h3 style="text-align: center;">商品 <span style="font-size: small;">(全<%= @products_count %>件)</span></h3>
 			<div class="row">
 				<% @products.each do |products| %>
-				<div class="col-xs-3">
-					<%= link_to public_product_path(products.id) do %>
-						<%= attachment_image_tag products, :image, size: "200x200" %>
-					<% end %>
-					<p><%= link_to products.name, public_product_path(products.id) %></p>
-					<p>¥<%= products.non_taxed_price %></p>
-				</div>
-				<% end %>
-			</div>
-		</div>
-	</div>
+          <% if products.genre.status == true %>
+            <% if products.sale_status == true %>
+              <div class="col-xs-3">
+                <%= link_to public_product_path(products.id) do %>
+                  <%= attachment_image_tag products, :image, size: "200x200" %>
+                <% end %>
+                <p><%= link_to products.name, public_product_path(products.id) %></p>
+                <p>¥<%= products.non_taxed_price %></p>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+	    </div>
 	<div class="row">
 		<div class="col-xs-12 col-xs-offset-6">
 			<%= paginate @products %>

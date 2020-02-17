@@ -4,24 +4,39 @@
 			<h2>商品 編集画面</h2>
 		</section>
 	</div>
-	<div class=row>
-		<div class="col-sm-3">
-			<%= form_for @product, url:admin_product_path do |f| %>
+	<%= form_for @product, url:admin_product_path do |f| %>
+		<div class=row>
+			<div class="col-sm-3">
 				<%= f.attachment_field :image %>
+			</div>
+			<div class="col-sm-6">
+				<table class="table line" style="width:60%">
+					<tr>
+						<th class="line"><%= f.label "商品名" %></th>
+						<td class="line"><%= f.text_field :name,style: "width:90%" %></td>
+					</tr>
+					<tr>
+						<th class="line"><%= f.label "商品説明" %></th>
+						<td class="line"><%= f.text_field :explain,style: "width:90%" %></td>
+					</tr>
+					<tr>
+						<th class="line"><%= f.label "ジャンル" %></th>
+						<td class="line"><%= f.collection_select :genre_id,Genre.where("status = 1"),:id,:name,{},style: "width:90%" %></td>
+					</tr>
+					<tr>
+						<th class="line"><%= f.label "税込価格(税抜価格)" %></th>
+						<td class="line"><%= f.text_field :non_taxed_price,style: "width:90%" %>円</td>
+					</tr>
+					<tr>
+						<th class="line"><%= f.label "販売ステータス" %></th>
+						<td class="line"><%= f.select :sale_status,[["販売中","true"],["売切れ","false"]],{},style: "width:90%" %></td>
+					</tr>
+					<tr>
+						<th class="line">&nbsp;</th>
+						<td class="line"><%= f.submit "変更を保存する", class: "btn btn-primary pull-right",style: "margin-right:20px" %></td>
+					</tr>
+				</table>
+			</div>
 		</div>
-		<div class="col-sm-6">
-				<%= f.label "商品名" %>
-					<%= f.text_field :name %><br />
-				<%= f.label "商品説明" %>
-					<%= f.text_field :explain %><br />
-				<%= f.label "ジャンル" %>
-					<%= f.collection_select :genre_id,Genre.all,:id,:name %><br />
-				<%= f.label "税込価格(税抜価格)" %>
-					<%= f.text_field :non_taxed_price %>円<br />
-				<%= f.label "販売ステータス" %>
-					<%= f.select :sale_status,[["販売中","true"],["売切れ","false"]] %><br />
-				<%= f.submit "変更を保存する", class: "btn btn-default" %>
-				<% end %>
-		</div>
-	</div>
+	<% end %>
 </div>

@@ -1,3 +1,25 @@
 // Place all the styles related to the admin/products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#product_img{
+	margin-top:10px;
+}
+
+#img_prev{
+  margin-top: 20px;
+  padding: 5px 8px;
+  border: solid 1px black;
+  color: #666;
+  position: relative;
+  padding: 0;
+  border-radius: 5px;
+  width: 250px;
+  height: 250px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #fff;
+  box-sizing: border-box;
+  transition: 0.3s ease-out;
+}
