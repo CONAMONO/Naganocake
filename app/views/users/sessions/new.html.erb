@@ -1,56 +1,57 @@
 <div class="cover">
-  <container>
-    <div class="container center-block" style= "width: 50%; padding-top: 30px;">
-      <div class="row">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th class="head_message " colspan="2" style="font-size: 18px; text-align: center; background-color: #337ab7;"><strong>会員の方はこちらからログイン</strong></th>
-            </tr>
-          </thead>
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <tbody>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <container>
+      <div class="container center-block" style= "width: 50%; padding-top: 30px;">
+        <div class="row">
+          <table class="table table-bordered">
+            <thead>
               <tr>
-                <td class="field col-xs-3" style="font-size: 16px;">
-                  <%= f.label :email %>
-                </td>
-                <td class="field col-xs-9" style="font-size: 16px;">
-                  <%= f.email_field :email, autofocus: true, autocomplete: "メールアドレス" %>
-                </td>
+                <th class="head_message " colspan="2" style="font-size: 18px; text-align: center; background-color: #337ab7;"><strong>会員の方はこちらからログイン</strong></th>
               </tr>
+            </thead>
 
-              <tr>
-                <td class="field col-xs-3" style="font-size: 16px;">
-                  <%= f.label :password %>
-                </td>
-                <td class="field col-xs-9" style="font-size: 16px;">
-                  <%= f.password_field :password, autocomplete: "パスワード" %>
-                </td>
-              </tr>
+              <tbody>
+                <tr>
+                  <td class="field col-xs-3" style="font-size: 16px;">
+                    <%= f.label :email %>
+                  </td>
+                  <td class="field col-xs-9" style="font-size: 16px;">
+                    <%= f.email_field :email, autofocus: true, autocomplete: "メールアドレス" %>
+                  </td>
+                </tr>
 
-              <tr>
-                <td class="field " colspan="2" style="">
-                  <%= f.submit "ログイン", class: "goto_input_info btn btn-default btn-primary center-block", style: "width: 50%;"  %>
-                </td>
-              </tr>
-            </tbody>
+                <tr>
+                  <td class="field col-xs-3" style="font-size: 16px;">
+                    <%= f.label :password %>
+                  </td>
+                  <td class="field col-xs-9" style="font-size: 16px;">
+                    <%= f.password_field :password, autocomplete: "パスワード" %>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="field " colspan="2" style="">
+                    <%= f.submit "ログイン", class: "goto_input_info btn btn-default btn-primary center-block", style: "width: 50%;"  %>
+                  </td>
+                </tr>
+              </tbody>
+
+          </table>
+
+          <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+            <%= link_to "=> パスワードを忘れた方はこちら", new_password_path(resource_name) %><br/>
           <% end %>
 
-        </table>
-
-        <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-          <%= link_to "=> パスワードを忘れた方はこちら", new_password_path(resource_name) %><br/>
-        <% end %>
-
-        <div>
-          <strong>登録がお済みでない方</strong>
-          <%= render "users/shared/links" %>
+          <div>
+            <strong>登録がお済みでない方</strong>
+            <%= render "users/shared/links" %>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- 以下はセット -->
-    <div style="margin-bottom: 50px;"></div>
-    <footer></footer>
-  </container>
+      <!-- 以下はセット -->
+      <div style="margin-bottom: 50px;"></div>
+      <footer></footer>
+    </container>
+  <% end %>
 </div>

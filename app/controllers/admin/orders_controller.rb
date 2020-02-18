@@ -1,4 +1,5 @@
 class Admin::OrdersController < ApplicationController
+  before_action :authenticate_admin!
   def top
     @today_order = Order.where(created_at: Time.now.all_day)
   end
