@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row">
 			<%= render "layouts/genre_bar", genres: @genres %>
-			<div class="col-xs-9 pull-left" style="margin: 15px;">
+			<div class="col-md-9 pull-left" style="margin: 15px;">
 				<div>
 					<div class="pull-left" style="margin: 0px 15px;">
 						<%= attachment_image_tag @product, :image, size: "300x300" %>
@@ -26,9 +26,9 @@
 							<%= add.submit "カートに入れる", class: "btn btn-primary" %>
 							<% end %>
 							<% else %>
-							<br><label style="font-size: 2em;">ショッピングを続けるには新規登録、若しくはログインしてください。</label>
+							<br><label style="font-size: 1.5em;">ショッピングを続けるには新規登録、若しくはログインしてください。</label>
 							<%= link_to new_user_registration_path do %>
-								<label style="font-size: 1.5em;">登録がお済みでない方こちら</label>
+								<label style="font-size: 1.2em;">登録がお済みでない方こちら</label>
 							<% end %>
 						<% end %>
 					</div>
