@@ -23,34 +23,34 @@
 					<table class="table table-bordered" style="width: 50%">
 						<tbody>
 							<tr>
-								<td class="active col-xs-3">氏名</td>
+								<td class="col-xs-3">氏名</td>
 								<td><%= f.text_field :first_name, value: @user.first_name, class: "col-xs-3", style: "margin-right: 10px" %>
 									<%= f.text_field :last_name, value: @user.last_name, class: "col-xs-3" %></td>
 							</tr>
 
 							<tr>
-								<td class="active col-xs-3">カナ</td>
+								<td class="col-xs-3">カナ</td>
 								<td><%= f.text_field :first_name_kata, value: @user.first_name_kata, class: "col-xs-3", style: "margin-right: 10px" %>
 									<%= f.text_field :last_name_kata, value: @user.last_name_kata, class: "col-xs-3" %></td>
 							</tr>
 
 							<tr>
-								<td class="active col-xs-3">郵便番号</td>
+								<td class="col-xs-3">郵便番号</td>
 								<td><%= f.text_field :postal_code, value: @user.postal_code.insert(3, "-"), class: "col-xs-3" %></td>
 							</tr>
 
 							<tr>
-								<td class="active col-xs-3">住所</td>
+								<td class="col-xs-3">住所</td>
 								<td><%= f.text_field :street_address, value: @user.street_address, class: "col-xs-9", style: "width: 100%" %></td>
 							</tr>
 
 							<tr>
-								<td class="active col-xs-3">電話番号</td>
+								<td class="col-xs-3">電話番号</td>
 								<td><%= f.text_field :phone_number, value: @user.phone_number, class: "col-xs-4" %></td>
 							</tr>
 
 							<tr>
-								<td class="active col-xs-3">メールアドレス</td>
+								<td class="col-xs-3">メールアドレス</td>
 								<td><%= f.email_field :email, value: @user.email, class: "col-xs-5" %></td>
 							</tr>
 						</tbody>

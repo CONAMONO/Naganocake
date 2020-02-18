@@ -23,32 +23,32 @@
 			<table class="table table-bordered row" style="width: 50%">
 				<tbody>
 					<tr>
-						<td class="active col-xs-3">氏名</td>
+						<td class="col-xs-3">氏名</td>
 						<td class="col-xs-9"><%= @user.first_name + " " + @user.last_name %></td>
 					</tr>
 
 					<tr>
-						<td class="active">カナ</td>
+						<td class="">カナ</td>
 						<td><%= @user.first_name_kata + " " + @user.last_name_kata %></td>
 					</tr>
 
 					<tr>
-						<td class="active">郵便番号</td>
+						<td class="">郵便番号</td>
 						<td><%= "〒" + @user.postal_code %></td>
 					</tr>
 
 					<tr>
-						<td class="active">住所</td>
+						<td class="">住所</td>
 						<td><%= @user.street_address %></td>
 					</tr>
 
 					<tr>
-						<td class="active">電話番号</td>
+						<td class="">電話番号</td>
 						<td><%= @user.phone_number %></td>
 					</tr>
 
 					<tr>
-						<td class="active">メールアドレス</td>
+						<td class="">メールアドレス</td>
 						<td><%= @user.email %></td>
 					</tr>
 				</tbody>
