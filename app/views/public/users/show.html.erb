@@ -27,51 +27,63 @@
 					<td class="col-xs-9"><%= @user.first_name + " " + @user.last_name %></td>
 				</tr>
 
-				<tr>
-					<td>カナ</td>
-					<td><%= @user.first_name_kata + " " + @user.last_name_kata %></td>
-				</tr>
+		<div class="mypage-info center-block container" style="width: 95%">
+			<table class="table table-bordered row" style="width: 50%">
+				<tbody>
+					<tr>
+						<td class="active col-xs-3">氏名</td>
+						<td class="col-xs-9"><%= @user.first_name + " " + @user.last_name %></td>
+					</tr>
 
-				<tr>
-					<td>郵便番号</td>
-					<td><%= "〒" + @user.postal_code %></td>
-				</tr>
+					<tr>
+						<td class="active">カナ</td>
+						<td><%= @user.first_name_kata + " " + @user.last_name_kata %></td>
+					</tr>
 
-				<tr>
-					<td>住所</td>
-					<td><%= @user.street_address %></td>
-				</tr>
+					<tr>
+						<td class="active">郵便番号</td>
+						<td><%= "〒" + @user.postal_code %></td>
+					</tr>
 
-				<tr>
-					<td>電話番号</td>
-					<td><%= @user.phone_number %></td>
-				</tr>
+					<tr>
+						<td class="active">住所</td>
+						<td><%= @user.street_address %></td>
+					</tr>
 
-				<tr>
-					<td>メールアドレス</td>
-					<td><%= @user.email %></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+					<tr>
+						<td class="active">電話番号</td>
+						<td><%= @user.phone_number %></td>
+					</tr>
 
-	<div class="container center-block" style="width: 95%">
-		<div class="row">
-			<div class="" style="width: 30%">
-				<h3 class="mypage-item col-xs-6" style="font-size: 18px">配送先</h3>
-				<%= link_to '一覧を見る', public_shipping_addresses_path, class: "btn btn-default btn-primary col-xs-6" %>
+					<tr>
+						<td class="active">メールアドレス</td>
+						<td><%= @user.email %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="container center-block" style="width: 95%">
+			<div class="row">
+				<div class="" style="width: 30%">
+					<h3 class="mypage-item col-xs-6" style="font-size: 18px">配送先</h3>
+					<%= link_to '一覧を見る', public_shipping_addresses_path, class: "btn btn-default btn-primary col-xs-6" %>
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="container center-block" style="width: 95%">
-		<div class="row">
-			<div class="" style="width: 30%">
-				<h3 class="mypage-item col-xs-6" style="font-size: 18px">注文履歴</h3>
-				<%= link_to '一覧を見る', public_orders_path, class: "btn btn-default btn-primary col-xs-6" %>
+		<div class="container center-block" style="width: 95%">
+			<div class="row">
+				<div class="" style="width: 30%">
+					<h3 class="mypage-item col-xs-6" style="font-size: 18px">注文履歴</h3>
+					<%= link_to '一覧を見る', public_orders_path, class: "btn btn-default btn-primary col-xs-6" %>
+				</div>
 			</div>
 		</div>
-	</div>
+
+		<!-- 以下はセット -->
+		<div style="margin-bottom: 50px;"></div>
+		<footer></footer>
 	</div>
 
 	<footer></footer>

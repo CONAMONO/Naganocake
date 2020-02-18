@@ -7,88 +7,90 @@
 </head>
 <body>
 	<div class="cover">
-	<%= form_with url: public_orders_confirm_path, method: :get, data: {remote: false} do |f| %>
-		<div class= "container">
-			<%#= render 'layouts/error_messages', model: f.object %>
+		<%= form_with url: public_orders_confirm_path, method: :get, data: {remote: false} do |f| %>
+			<div class= "container">
+				<%#= render 'layouts/error_messages', model: f.object %>
 
-			<div class="center-block" style="width: 100%">
-				<h2 style="font-size: 18px;">購入情報入力</h2>
-			</div>
-
-			<%#= form_with model: @order, url: public_orders_confirm_path, method: :get,data: {remote: false} do |f| %>
-			<div class="center-block" style="width: 100%">
-				<h3 style="font-size: 18px; font-weight: bold;">支払方法</h3>
-				<div class="center-block" style="width: 95%" >
-					<div class="row" style="font-size: 16px;">
-						<%= f.radio_button :payment_method, 'クレジットカード', checked: true %>
-						<%= 'クレジットカード' %>
-					</div>
-
-					<div class="row" style="font-size: 16px;">
-						<%= f.radio_button :payment_method, '銀行振込' %>
-						<%= '銀行振込' %>
-					</div>
+				<div class="center-block" style="width: 100%">
+					<h2 style="font-size: 18px;">購入情報入力</h2>
 				</div>
-			</div>
-		</div>
 
-		<div class= "container">
-			<div class="center-block" style="width: 100%">
-				<h3 style="font-size: 18px; font-weight: bold;">お届け先</h3>
-				<div class="center-block" style="width: 95%">
-					<div class="row">
-						<%= f.radio_button :address_id, 1, checked: true%>
-						<h4 class= "" style= "display: inline-block">ご自身の住所</h4>
-						<div class="center-block" style="width: 95%; font-size: 16px;">
-							<%= '〒' + @user.postal_code + " " + @user.street_address %>
-							<br>
-							<%= @user.first_name + "　" + @user.last_name  %>
+				<%#= form_with model: @order, url: public_orders_confirm_path, method: :get,data: {remote: false} do |f| %>
+				<div class="center-block" style="width: 100%">
+					<h3 style="font-size: 18px; font-weight: bold;">支払方法</h3>
+					<div class="center-block" style="width: 95%" >
+						<div class="row" style="font-size: 16px;">
+							<%= f.radio_button :payment_method, 'クレジットカード', checked: true %>
+							<%= 'クレジットカード' %>
 						</div>
-					</div>
 
-					<div class="row">
-						<%= f.radio_button :address_id, 2 %>
-						<h4 class= "" style= "display: inline-block">登録済住所から選択</h4>
-						<div class="center-block" style="width: 95%">
-							<%= f.collection_select :select_addr, @shipping_addresses, :id, :view_address, {}, class: "btn btn-default", style: "width: 60%; font-size: 16px;" %>
-						</div>
-					</div>
-
-					<div class="row">
-						<%= f.radio_button :address_id, 3 %>
-						<h4 style= "display: inline-block">新しいお届け先</h4>
-						<div class="center-block" style="width: 95%; font-size: 16px;">
-							<table>
-								<tbody>
-									<tr>
-										<td class= "col-xs-2">郵便番号</td>
-										<td class= "col-xs-10" style="padding-bottom: 10px;">
-											<%= f.text_field :new_postal_code %>
-											<span>ハイフンなし</span>
-										</td>
-									</tr>
-									<tr>
-										<td class= "col-xs-2">住所</td>
-										<td class= "col-xs-10" style="padding-bottom: 10px;"><%= f.text_field :new_street_address, style: "width: 100%" %></td>
-									</tr>
-									<tr>
-										<td class= "col-xs-2">宛名</td>
-										<td class= "col-xs-10" style="padding-bottom: 10px;"><%= f.text_field :new_name %></td>
-									</tr>
-								</tbody>
-							</table>
+						<div class="row" style="font-size: 16px;">
+							<%= f.radio_button :payment_method, '銀行振込' %>
+							<%= '銀行振込' %>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
-		<div class="center-block" style="width: 150px; margin-bottom: 80px;">
-			<%= f.submit '確認画面へ進む', class: "btn btn-default btn-primary", style: "width: 100%" %>
-			<%#= f.submit '確認画面へ進む', public_orders_confirm_path, class: "btn btn-default" %>
-		</div>
-	<% end %>
+			<div class= "container">
+				<div class="center-block" style="width: 100%">
+					<h3 style="font-size: 18px; font-weight: bold;">お届け先</h3>
+					<div class="center-block" style="width: 95%">
+						<div class="row">
+							<%= f.radio_button :address_id, 1, checked: true%>
+							<h4 class= "" style= "display: inline-block">ご自身の住所</h4>
+							<div class="center-block" style="width: 95%; font-size: 16px;">
+								<%= '〒' + @user.postal_code + " " + @user.street_address %>
+								<br>
+								<%= @user.first_name + "　" + @user.last_name  %>
+							</div>
+						</div>
+
+						<div class="row">
+							<%= f.radio_button :address_id, 2 %>
+							<h4 class= "" style= "display: inline-block">登録済住所から選択</h4>
+							<div class="center-block" style="width: 95%">
+								<%= f.collection_select :select_addr, @shipping_addresses, :id, :view_address, {}, class: "btn btn-default", style: "width: 60%; font-size: 16px;" %>
+							</div>
+						</div>
+
+						<div class="row">
+							<%= f.radio_button :address_id, 3 %>
+							<h4 style= "display: inline-block">新しいお届け先</h4>
+							<div class="center-block" style="width: 95%; font-size: 16px;">
+								<table>
+									<tbody>
+										<tr>
+											<td class= "col-xs-2">郵便番号</td>
+											<td class= "col-xs-10" style="padding-bottom: 10px;">
+												<%= f.text_field :new_postal_code %>
+												<span>ハイフンなし</span>
+											</td>
+										</tr>
+										<tr>
+											<td class= "col-xs-2">住所</td>
+											<td class= "col-xs-10" style="padding-bottom: 10px;"><%= f.text_field :new_street_address, style: "width: 100%" %></td>
+										</tr>
+										<tr>
+											<td class= "col-xs-2">宛名</td>
+											<td class= "col-xs-10" style="padding-bottom: 10px;"><%= f.text_field :new_name %></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="center-block" style="width: 150px;">
+				<%= f.submit '確認画面へ進む', class: "btn btn-default btn-primary", style: "width: 100%" %>
+				<%#= f.submit '確認画面へ進む', public_orders_confirm_path, class: "btn btn-default" %>
+			</div>
+		<% end %>
+		<!-- 以下はセット -->
+		<div style="margin-bottom: 50px;"></div>
+		<footer></footer>
 	</div>
-	<footer></footer>
 </body>
 </html>
