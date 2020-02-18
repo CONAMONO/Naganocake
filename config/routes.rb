@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   	resources :users, only: [:index,:edit,:show,:update]
   	resources :products, only: [:index,:create,:show,:new,:edit,:update]
   	resources :orders, only: [:index,:show,:update]
+    resources :order_products, only: [:update]
   	get "top"  => "orders#top"
-    patch "/order_products/:id" => "order_products#update"
   end
 
   namespace :public do

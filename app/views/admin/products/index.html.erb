@@ -1,5 +1,6 @@
+<div class="cover">
 <div class="container">
-		<div class="row" style="display:flex">
+		<div class="row" style="display:flex; padding:20px;">
 			<section style="width:90%">
 				<h2>商品一覧画面</h2>
 			</section>
@@ -7,8 +8,8 @@
 					<%= link_to "",new_admin_product_path, class:"btn btn-default glyphicon glyphicon-plus" %>
 				</span>
 		</div>
-	<div class="row" style="margin:20px 0px 20px">
-		<table class="table table-striped" style="width:90%;margin:0 auto">
+	<div class="row" style="padding:20px">
+		<table class="table" style="width:90%;">
 			<thead class="table-bordered">
 				<tr>
 					<th>商品ID</th>
@@ -18,6 +19,28 @@
 					<th>ステータス</th>
 				</tr>
 			</thead>
+			<% if @search_product %>
+			  <tbody>
+				<% @search_product.each do |product| %>
+					<tr>
+						<td><%= product.id %></td>
+						<td>
+							<%= link_to admin_product_path(product.id) do %>
+								<%= product.name %>
+							<% end %>
+							</td>
+						<td><%= number_with_delimiter(product.non_taxed_price) %>円	</td>
+						<td><%= product.genre.name %></td>
+						<td><% if product.sale_status == true %>
+								販売中
+							<% else %>
+								売切れ
+							<% end %>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+			<% else %>
 			<tbody>
 				<% @product.each do |product| %>
 					<tr>
@@ -38,6 +61,8 @@
 					</tr>
 				<% end %>
 			</tbody>
+			<% end %>
 		</table>
 	</div>
+</div>
 </div>

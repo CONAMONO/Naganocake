@@ -21,8 +21,10 @@
   border-bottom: 0px !important;
 }
 .cover{
-          background-image:  image-url('backimg1.jpeg');
-          background-size:  cover;
+		background-color: rgba(0,0,0,0.5);
+          background-image:  image-url('back1.jpeg');
+          background-size:  contain;
+          height:1024px
 }
 
 ul{
@@ -40,8 +42,7 @@ ul{
 @font-face {
 	font-family: "darts";
 	src: font-url('/assets/DartsFont.woff2') format("truetype");
-	font-weight: normal;
-  	font-style: normal;
+	font-weight: bold;
 }
 
 a {
@@ -51,3 +52,33 @@ a {
 a:hover {
 	color: #fffafa;
 }
+
+.products-name{
+	background-color: rgba( 0, 0, 0, 0.5);
+	margin-bottom:0;
+}
+
+.produt-box {
+	background-color: rgba( 0, 0, 0, 0.5);
+}
+
+.name-size {
+}
+
+.col-md-3 {
+padding:5px;
+text-align: center;
+	height:240px;
+}
+
+
+.col-md-9 {
+	background-color: rgba( 0, 0, 0, 0.5);
+}
+
+.list-group {
+	background-color: rgba( 0, 0, 0, 0.5);
+	padding:auto;
+	margin:auto;
+}
+
