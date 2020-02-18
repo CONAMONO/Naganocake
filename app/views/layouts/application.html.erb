@@ -14,10 +14,10 @@
         <% if user_signed_in? %>
         <div class="navbar-header">
           <%= link_to root_path do %>
-            <%= image_tag 'logo.png', size: "150x50" %>
+            <%= image_tag 'logo.png', size: "200x100" %>
           <% end %>
         </div>
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right" style="position:absolute;top:20px;right:230px;">
             <li><%= link_to public_cart_items_path do %>
               <span> カート</span>
               <% end %></li>
@@ -34,10 +34,10 @@
         <% elsif admin_signed_in? %>
         <div class="navbar-header">
           <%= link_to admin_top_path do %>
-            <%= image_tag 'logo.png', size: "150x100" %>
+            <%= image_tag 'logo.png', size: "200x100" %>
           <% end %>
         </div>
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right" style="position:absolute;top:0px;right:230px;">
           <li><%= link_to admin_products_path do %>
             <span> 商品一覧</span>
           <% end %></li>
@@ -67,12 +67,12 @@
         <% else %>
         <div class="navbar-header">
           <%= link_to root_path do %>
-            <%= image_tag 'logo.png', size: "150x50" %>
+            <%= image_tag 'logo.png', size: "200x100" %>
           <% end %>
         </div>
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right" style="position:absolute;top:20px;right:230px;">
           <li><%= link_to new_user_session_path do %>
-                <span > 顧客ログイン</span>
+                <span> 顧客ログイン</span>
               <% end %></li>
           <li><%= link_to new_admin_session_path do %>
                 <span> 管理者ログイン</span>
