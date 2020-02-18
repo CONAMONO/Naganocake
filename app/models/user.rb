@@ -25,6 +25,6 @@ class User < ApplicationRecord
   validates :postal_code,
     length: { minimum: 7, maximum: 7 }
   validates :phone_number,
-    length: { minimum: 11, maximum: 11 }
+    length: { minimum: 10, maximum: 11 }
 
 end
