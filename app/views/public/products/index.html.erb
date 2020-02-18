@@ -7,7 +7,7 @@
 				</h3>
 				<div class="row">
 					<% @products.each do |products| %>
-						<%# if products.genre.status == true %>
+						<% if products.genre.status == true %>
 							<% if products.sale_status == true %>
 								<div class="col-xs-3 pull-left">
 									<div>
@@ -19,7 +19,7 @@
 									</div>
 								</div>
 							<% end %>
-						<%# end %>
+						<% end %>
 					<% end %>
 		<div class="row">
 			<div class="col-xs-12 col-xs-offset-6">
