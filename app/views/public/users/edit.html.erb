@@ -35,7 +35,7 @@
 
 						<tr>
 							<td class="active col-xs-3">郵便番号</td>
-							<td><%= f.text_field :postal_code, value: @user.postal_code, class: "col-xs-3" %></td>
+							<td><%= f.text_field :postal_code, value: @user.postal_code.insert(3, "-"), class: "col-xs-3" %></td>
 						</tr>
 
 						<tr>
@@ -63,6 +63,8 @@
 
 		</div>
 	<% end %>
+	<!-- 以下はセット -->
+	<div style="margin-bottom: 50px;"></div>
 	<footer></footer>
 </body>
 </html>
