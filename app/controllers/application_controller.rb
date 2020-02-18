@@ -46,6 +46,12 @@ class ApplicationController < ActionController::Base
 	    	redirect_to root_path
     	end
   	end
-
   end
+
+  before_action :set_search
+
+def set_search
+  @search = Product.ransack(params[:q])
+  @search_product = @search.result
+end
 end
