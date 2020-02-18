@@ -51,7 +51,9 @@ class ApplicationController < ActionController::Base
   before_action :set_search
 
 def set_search
-  @search = Product.ransack(params[:q])
-  @search_product = @search.result
+    @search = Product.ransack(params[:q])
+  if params[:q]
+    @search_product = @search.result
+  end
 end
 end

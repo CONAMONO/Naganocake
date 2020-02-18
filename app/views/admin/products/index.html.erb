@@ -40,9 +40,10 @@
 					</tr>
 				<% end %>
 			</tbody>
+			<%= paginate @search_product %>
 			<% else %>
 			<tbody>
-				<% @product.each do |product| %>
+				<% @products.each do |product| %>
 					<tr>
 						<td><%= product.id %></td>
 						<td>
@@ -63,6 +64,13 @@
 			</tbody>
 			<% end %>
 		</table>
+		<div class = "text-center">
+			<% if @search_product %>
+				<%= paginate @search_product %>
+			<% else %>
+				<%= paginate @products %>
+			<% end %>
+		<div>
 	</div>
 </div>
 </div>
