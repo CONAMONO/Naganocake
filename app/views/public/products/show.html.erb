@@ -27,9 +27,7 @@
 							<% end %>
 							<% else %>
 							<br><label style="font-size: 1.5em;">ショッピングを続けるには新規登録、若しくはログインしてください。</label>
-							<%= link_to new_user_registration_path do %>
-								<label style="font-size: 1.2em;">登録がお済みでない方こちら</label>
-							<% end %>
+								<label style="font-size: 1.2em;">登録がお済みでない方は<%= link_to new_user_registration_path do %>こちら  <% end %> </label>
 						<% end %>
 					</div>
 
