@@ -6,12 +6,12 @@ class Admin::OrdersController < ApplicationController
   def index
     @order_products = OrderProduct.all
     if params[:link] == "top"
-    @orders = Order.where(created_at: Time.now.all_day)
+    @orders = Order.where(created_at: Time.now.all_day).page(params[:page]).per(10)
     elsif params[:link] == "user"
        @user = User.find(params[:user_id])
-       @orders = @user.orders
+       @orders = @user.orders.page(params[:page]).per(10)
     else
-    	@orders = Order.all
+    	@orders = Order.page(params[:page]).per(10)
     end
   end
 
