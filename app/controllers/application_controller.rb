@@ -1,22 +1,32 @@
 class ApplicationController < ActionController::Base
   before_action :user_status_check!
   before_action :configure_permitted_parameters, if: :devise_controller?
+
 	def after_sign_in_path_for(resource)
 		if admin_signed_in?
+        $sign_in_user = "admin"
 		    admin_top_path
 		elsif user_signed_in?
-			root_path
-	    else
+        $sign_in_user = "user"
+			  root_path
+
+	  else
 	    	root_path
-	    end
+	  end
 	end
 
 	def after_sign_out_path_for(resource)
-		if admin_signed_in?
-	    　　new_admin_session_path
-	    else
-    	    root_path
-    	end
+    if $sign_in_user == "admin"
+      new_admin_session_path
+    else
+      root_path
+    end
+
+		# if admin_signed_in?
+	 #    　　new_admin_session_path
+	 #    else
+  #   	    root_path
+  #   	end
 	end
 
   protected

@@ -1,10 +1,11 @@
+<div class="cover">
 <div class="container">
-	<div class="row">
+	<div class="row" style="padding:20px;">
 		<section>
 			<h2>ジャンル追加・一覧画面</h2>
 		</section>
 	</div>
-	<div class="row" style="margin:20px 0px 20px">
+	<div class="row" style="padding:10px 25px 10px;">
 		<%= form_for @genre, url: admin_genres_path do |f|%>
 				<%= f.label "ジャンル" %>
 				<%= f.text_field :name %>
@@ -15,8 +16,8 @@
 				<%= f.submit "追加", class:"btn btn-primary btn-sm" %>
 		<% end %>
 	</div>
-	<div class="row" style="margin:20px 20px 0px 20px">
-		<table class="table table-striped" style="width:40%">
+	<div class="row" style="padding:10px 25px 10px;">
+		<table class="table" style="width:40%">
 			<thead>
 				<tr>
 					<th>ジャンル</th>
@@ -41,4 +42,5 @@
 			</tbody>
 		</table>
 	</div>
+</div>
 </div>
