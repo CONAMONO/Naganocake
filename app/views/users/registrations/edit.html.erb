@@ -1,77 +1,77 @@
+<div class="cover">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="container center-block" style= "width: 50%; padding-top: 30px;">
+      <div class="row">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="head_message " colspan="2" style="font-size: 18px; text-align: center; background-color: #337ab7;"><h2>Edit <%= resource_name.to_s.humanize %></h2></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="field col-xs-8" style="font-size: 16px;">
+                <%= f.label :email %>
+              </td>
+              <td class="field col-xs-4" style="font-size: 16px;">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+              </td>
+            </tr>
 
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+            <% end %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <div class="container center-block" style= "width: 50%; margin: 30px auto;">
-    <div class="row">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th class="head_message " colspan="2" style="font-size: 18px; text-align: center; background-color: #337ab7;"><h2>Edit <%= resource_name.to_s.humanize %></h2></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="field col-xs-8" style="font-size: 16px;">
-              <%= f.label :email %>
-            </td>
-            <td class="field col-xs-4" style="font-size: 16px;">
-              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-            </td>
-          </tr>
+            <tr>
+              <td class="field" style="font-size: 16px;">
+                <%= f.label :password %> <br><i>(leave blank if you don't want to change it)</i>
+              </td>
+              <td class="field" style="font-size: 16px;">
+                <%= f.password_field :password, autocomplete: "new-password", class: "bg-dark" %>
+                <% if @minimum_password_length %>
+                  <br />
+                  <em><%= @minimum_password_length %> characters minimum</em>
+                <% end %>
+              </td>
+            </tr>
 
-          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-          <% end %>
+            <tr>
+              <td class="field" style="font-size: 16px;">
+                <%= f.label :password_confirmation %>
+              </td>
+              <td class="field" style="font-size: 16px;">
+                <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+              </td>
+            </tr>
 
-          <tr>
-            <td class="field" style="font-size: 16px;">
-              <%= f.label :password %> <br><i>(leave blank if you don't want to change it)</i>
-            </td>
-            <td class="field" style="font-size: 16px;">
-              <%= f.password_field :password, autocomplete: "new-password", class: "bg-dark" %>
-              <% if @minimum_password_length %>
-                <br />
-                <em><%= @minimum_password_length %> characters minimum</em>
-              <% end %>
-            </td>
-          </tr>
+            <tr>
+              <td class="field" style="font-size: 16px;">
+                <%= f.label :current_password %> <br><i>(we need your current password to confirm your changes)</i>
+              </td>
+              <td class="field" style="font-size: 16px;">
+                <%= f.password_field :current_password, autocomplete: "current-password" %>
+              </td>
+            </tr>
 
-          <tr>
-            <td class="field" style="font-size: 16px;">
-              <%= f.label :password_confirmation %>
-            </td>
-            <td class="field" style="font-size: 16px;">
-              <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-            </td>
-          </tr>
+            <tr>
+              <td class="field" colspan="2" style="font-size: 16px;">
+                <%= f.submit "Update", class: "btn btn-primary center-block", style: "width: 50%;"%>
+              </td>
+            </tr>
 
-          <tr>
-            <td class="field" style="font-size: 16px;">
-              <%= f.label :current_password %> <br><i>(we need your current password to confirm your changes)</i>
-            </td>
-            <td class="field" style="font-size: 16px;">
-              <%= f.password_field :current_password, autocomplete: "current-password" %>
-            </td>
-          </tr>
+          </tbody>
+        </table>
 
-          <tr>
-            <td class="field" colspan="2" style="font-size: 16px;">
-              <%= f.submit "Update", class: "btn btn-primary center-block", style: "width: 50%;"%>
-            </td>
-          </tr>
+        <h3>Cancel my account</h3>
+        <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %></p>
 
-        </tbody>
-      </table>
-
-      <h3>Cancel my account</h3>
-      <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %></p>
-
-      <%= link_to "Back", :back %>
+        <%= link_to "Back", :back %>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
 
-<!-- 以下はセット -->
-<div style="margin-bottom: 50px;"></div>
-<footer></footer>
+  <!-- 以下はセット -->
+  <div style="margin-bottom: 50px;"></div>
+  <footer></footer>
+</div>

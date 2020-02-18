@@ -61,6 +61,7 @@ footer{
     bottom: 0; /*下に固定*/
 }
 
-input, textarea{
-	background-color: #333333;
+input, textarea, select, option{
+	//background-color: #FFF;
+	color: #000000;
 }
