@@ -7,8 +7,7 @@ class Public::ProductsController < ApplicationController
 		if params[:genre_id]
 			@genre = Genre.find(params[:genre_id])
 			# 降順で表示
-			@products = Product.where(genre_id: params[:genre_id])
-			@products = Product.page(params[:page]).per(PER)
+			@products = Product.where(genre_id: params[:genre_id]).page(params[:page]).per(PER)
 			@products_count = @products.count
 		else
 			@products_count = Genre.select("id").count
