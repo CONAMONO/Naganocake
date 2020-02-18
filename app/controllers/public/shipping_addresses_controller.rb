@@ -1,4 +1,5 @@
 class Public::ShippingAddressesController < ApplicationController
+	  before_action :authenticate_user!
 	def index
 		@shipping_addresses = User.find(current_user.id)
 		@sh_addresses = @shipping_addresses.shipping_addresses
