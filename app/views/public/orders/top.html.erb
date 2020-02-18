@@ -6,7 +6,7 @@
 				<h3 style="text-align: center;">商品 <span style="font-size: small;">(全<%= @products_count %>件)</span></h3>
 				<div class="row">
 					<% @products.each do |products| %>
-			          	<% if products.genre.status == true %>
+			          	<%# if products.genre.status == true %>
 				            <% if products.sale_status == true %>
 								<div class="col-xs-3">
 									<%= link_to public_product_path(products.id) do %>
@@ -16,7 +16,7 @@
 									<p><%= products.non_taxed_price %>円(税抜き)</p>
 								</div>
 							<% end %>
-						<% end %>
+						<%# end %>
 					<% end %>
 				</div>
 			</div>
