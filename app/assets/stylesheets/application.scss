@@ -22,7 +22,7 @@
 }
 .cover{
 		background-color: rgba(0,0,0,0.5);
-          background-image:  image-url('backimg1.jpeg');
+          background-image:  image-url('back1.jpeg');
           background-size:  contain;
           height:1024px
 }
@@ -51,6 +51,35 @@ a {
 
 a:hover {
 	color: #fffafa;
+}
+
+.products-name{
+	background-color: rgba( 0, 0, 0, 0.5);
+	margin-bottom:0;
+}
+
+.produt-box {
+	background-color: rgba( 0, 0, 0, 0.5);
+}
+
+.name-size {
+}
+
+.col-md-3 {
+padding:5px;
+text-align: center;
+	height:240px;
+}
+
+
+.col-md-9 {
+	background-color: rgba( 0, 0, 0, 0.5);
+}
+
+.list-group {
+	background-color: rgba( 0, 0, 0, 0.5);
+	padding:auto;
+	margin:auto;
 }
 
 footer{

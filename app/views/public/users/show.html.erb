@@ -7,17 +7,25 @@
 </head>
 <body>
 	<div class="cover">
-		<div class="mypage-title center-block" style="width: 95%; padding-top: 10px;">
-			<h2 style="font-size: 18px">マイページ</h2>
-		</div>
+	<div class="mypage-title center-block" style="width: 95%">
+		<h2 style="margin-top:0;">マイページ</h2>
+	</div>
 
-		<header id="header" class="center-block" style="width: 95%">
-			<h3 class="mypage-item header-text" style="font-size: 18px">登録情報</h3>
-			<%= link_to '編集する', edit_public_users_path, class: "btn btn-default btn-primary" %>
-			<%= link_to 'パスワードを変更する', edit_user_registration_path, class: "btn btn-default btn-primary" %>
-		</header><!-- /header -->
+	<header id="header" class="center-block" style="width: 95%">
+		<h3 class="mypage-item header-text" style="font-size: 18px">登録情報</h3>
+		<%= link_to '編集する', edit_public_users_path, class: "btn btn-default btn-primary" %>
+		<%= link_to 'パスワードを変更する', edit_user_registration_path, class: "btn btn-default btn-primary" %>
+	</header><!-- /header -->
 
-		<br>
+	<br>
+
+	<div class="mypage-info center-block container" style="width: 95%">
+		<table class="table table-bordered row" style="width: 50%">
+			<tbody>
+				<tr>
+					<td class="col-xs-3">氏名</td>
+					<td class="col-xs-9"><%= @user.first_name + " " + @user.last_name %></td>
+				</tr>
 
 		<div class="mypage-info center-block container" style="width: 95%">
 			<table class="table table-bordered row" style="width: 50%">
@@ -77,5 +85,7 @@
 		<div style="margin-bottom: 50px;"></div>
 		<footer></footer>
 	</div>
+
+	<footer></footer>
 </body>
 </html>

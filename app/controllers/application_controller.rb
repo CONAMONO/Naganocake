@@ -55,5 +55,6 @@ def set_search
   if params[:q]
     @search_product = @search.result
   end
+
 end
 end
