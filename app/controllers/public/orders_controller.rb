@@ -90,6 +90,19 @@ class Public::OrdersController < ApplicationController
 	end
 
 	def confirm
+		if params[:address_id] == "3"
+			if params[:new_postal_code].length != 7
+				@error = "郵便番号は数字7桁で入力してください"
+
+				@order = Order.new
+				@shipping_addresses = current_user.shipping_addresses.all
+				@user = User.find(current_user.id)
+
+				render action: :new
+				return
+			end
+		end
+
 		@cart_items = current_user.cart_items.all
 		@products = Product.all
 		@order = Order.new
