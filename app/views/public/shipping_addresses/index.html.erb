@@ -2,31 +2,31 @@
 <div class="cover">
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-10 col-xs-offset-4" style="padding: 30px;">
+			<div class="col-xs-10" style="padding: 30px;">
 				<%= form_for [:public, @shipping_address] do |sh_address| %>
 
-				<table class="form-inline">
+				<table class="col-xs-7">
 						<tr>
-							<th class="list-group-item-info" style="width: 100px">郵便番号</th>
+							<th class="" style="padding: 10px;">郵便番号</th>
 							<td><%= sh_address.text_field :postal_code %></td>
 						</tr>
 						<tr>
-							<th class="list-group-item-info">住所</th>
+							<th class="" style="padding: 10px;">住所</th>
 							<td><%= sh_address.text_field :street_address %></td>
 						</tr>
 						<tr>
-							<th class="list-group-item-info">宛名</th>
+							<th class="" style="padding: 10px;">宛名</th>
 							<td><%= sh_address.text_field :name_address %></td>
 						</tr>
 				</table>
-					<div>
-					<%= sh_address.submit '登録', class: "btn btn-info" %>
+					<div class="col-xs-3" style="text-align: center; margin-top:110px; ">
+					<%= sh_address.submit '登録', class: "btn btn-info btn-lg" %>
+					</div>
 				<% end %>
-			</div>
 		</div>
 
 		<div class="row">
-			<div class="col-xs-10 col-xs-offset-4" style="padding: 0 30px;">
+			<div class="col-xs-10" style="padding: 0 30px;">
 				<table class="table-bordered sha-index">
 					<thead>
 						<tr>

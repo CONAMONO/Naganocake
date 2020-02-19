@@ -37,6 +37,7 @@ ul{
 	box-sizing: border-box;
 	font-family: "darts";
 	color: white;
+	font-size:18px;
 }
 
 @font-face {
@@ -91,6 +92,6 @@ footer{
 }
 
 input, textarea, select, option{
-	//background-color: #FFF;
-	color: #000000;
+	background-color: rgba(0,0,0,0.5);
+	color: white;
 }
