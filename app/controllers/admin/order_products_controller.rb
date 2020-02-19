@@ -3,8 +3,9 @@ class Admin::OrderProductsController < ApplicationController
 	def update
 		@order_product = OrderProduct.find(params[:id])
 		@order = @order_product.order
+		@order_products = @order.order_products
 		if 	@order_product.update(order_product_params)
-			if @order_product.production_status == "製作完了" then
+			if @order_products.where(production_status: "製作完了").count == @order_products.count then
 				@order.update(order_status: "発送準備中")
 			elsif @order_product.production_status == "製作中"then
 				@order.update(order_status: "製作中")
