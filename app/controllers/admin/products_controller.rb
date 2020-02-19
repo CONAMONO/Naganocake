@@ -13,10 +13,10 @@ class Admin::ProductsController < ApplicationController
 		if @product.save
 			redirect_to admin_product_path(@product.id)
 		else
-			@product = Product.new(product_params)
-			render 'create'
+			@product = Product.new
+			render 'new'
 		end
-	end
+	end	
 
 	def show
 		@product = Product.find(params[:id])
