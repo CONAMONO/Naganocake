@@ -40,7 +40,7 @@
 							<%= f.radio_button :address_id, 1, checked: true%>
 							<h4 class= "" style= "display: inline-block">ご自身の住所</h4>
 							<div class="center-block" style="width: 95%; font-size: 16px;">
-								<%= '〒' + @user.postal_code + " " + @user.street_address %>
+								<%= '〒' + @user.postal_code.insert(3, "-") + " " + @user.street_address %>
 								<br>
 								<%= @user.first_name + "　" + @user.last_name  %>
 							</div>

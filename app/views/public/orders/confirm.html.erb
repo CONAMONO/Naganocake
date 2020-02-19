@@ -93,7 +93,7 @@
 						<h4 style="font-size: 18px; font-weight: bold; display: inline-block; vertical-align: top; margin-right: 30px;">お届け先</h4>
 						<% if @address_id == "1" %>
 							<div style="font-size: 16px; display: inline-block;">
-								<%= '〒' + @user.postal_code + " " + @user.street_address %>
+								<%= '〒' + @user.postal_code.insert(3, "-") + " " + @user.street_address %>
 								<br>
 								<%= @user.first_name + "　" + @user.last_name  %>
 							</div>
@@ -103,7 +103,7 @@
 							<%= f.hidden_field :name_address, :value => @user.first_name + " " + @user.last_name %>
 						<% elsif @address_id == "2" %>
 							<div style="font-size: 16px; display: inline-block;">
-								<%= '〒' + @shipping_addresses.find(@select_addr).postal_code + " " + @shipping_addresses.find(@select_addr).street_address %>
+								<%= '〒' + @shipping_addresses.find(@select_addr).postal_code.insert(3, "-") + " " + @shipping_addresses.find(@select_addr).street_address %>
 								<br>
 								<%= @shipping_addresses.find(@select_addr).name_address %>
 							</div>
@@ -112,15 +112,17 @@
 							<%= f.hidden_field :street_address, :value =>  @shipping_addresses.find(@select_addr).street_address %>
 							<%= f.hidden_field :name_address, :value => @shipping_addresses.find(@select_addr).name_address %>
 						<% else %>
+							<%= f.hidden_field :postal_code, :value => @new_postal_code  %>
+							<%= f.hidden_field :street_address, :value => @new_street_address %>
+							<%= f.hidden_field :name_address, :value => @new_name %>
+
 							<div style="font-size: 16px; display: inline-block;">
 								<%= '〒' + @new_postal_code.insert(3, "-")  + " " + @new_street_address %>
 								<br>
 								<%= @new_name %>
 							</div>
 
-							<%= f.hidden_field :postal_code, :value => @new_postal_code.insert(3, "-")  %>
-							<%= f.hidden_field :street_address, :value => @new_street_address %>
-							<%= f.hidden_field :name_address, :value => @new_name %>
+
 						<% end %>
 					</div>
 				</div>

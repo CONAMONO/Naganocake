@@ -1,17 +1,20 @@
-<div class = "container">
-  <div class = "row" style="margin-top:100px">
-    <div class = "col-xs-3"></div>
-    <div class = "col-xs-4">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="cover">
+  <div class = "container">
+    <div class = "row" style="margin-top:100px">
+      <div class = "col-xs-3"></div>
+      <div class = "col-xs-4">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-          <p class = "text-right" >メールアドレス<%= f.email_field :email, autofocus: true,autocomplete: "メールアドレス", :size => "30"  %></p>
+            <p class = "text-right" >メールアドレス<%= f.email_field :email, autofocus: true,autocomplete: "メールアドレス", :size => "30"  %></p>
 
-          <p class = "text-right" >パスワード<%= f.password_field :password, autocomplete: "パスワード", :size => "30" %></p>
+            <p class = "text-right" >パスワード<%= f.password_field :password, autocomplete: "パスワード", :size => "30" %></p>
 
-        <div class="actions text-center">
-          <button type="submit" class="btn btn-primary">ログイン</button>
-        </div>
-      <% end %>
+          <div class="actions text-center">
+            <button type="submit" class="btn btn-primary">ログイン</button>
+          </div>
+        <% end %>
+      </div>
+      <div class = "col-xs-5"></div>
     </div>
-  <div class = "col-xs-5"></div>
+  </div>_
 </div>

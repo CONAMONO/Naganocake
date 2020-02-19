@@ -5,9 +5,9 @@
 			<div class="col-md-9 pull-left" style="margin: 15px;">
 				<div>
 					<div class="pull-left" style="margin: 0px 15px;">
-						<%= attachment_image_tag @product, :image, size: "300x300" %>
+						<%= attachment_image_tag @product, :image, size: "250x250" %>
 					</div>
-					<div style="margin: 0px 15px;">
+					<div style="margin: 10px 15px;">
 						<h2> <%= @product.name %> </h2><br>
 						<h4><%= @product.explain %></h4><br>
 						<h3 style="font-size: 2em;">
@@ -27,9 +27,7 @@
 							<% end %>
 							<% else %>
 							<br><label style="font-size: 1.5em;">ショッピングを続けるには新規登録、若しくはログインしてください。</label>
-							<%= link_to new_user_registration_path do %>
-								<label style="font-size: 1.2em;">登録がお済みでない方こちら</label>
-							<% end %>
+								<label style="font-size: 1.2em;">登録がお済みでない方は<%= link_to new_user_registration_path do %>こちら  <% end %> </label>
 						<% end %>
 					</div>
 
