@@ -3,7 +3,7 @@
 		<div class="row">
 			<%= render "layouts/genre_bar", genres: @genres %>
 			<div class="col-xs-9">
-				<h3 class="products-name" style="text-align: center;"><%= @genre.name %>  <span style="font-size: small;">(全<%=  @products.count %>件)</span>
+				<h3 class="products-name" style="text-align: center;"><%= @genre.name %>  <span style="font-size: small;">(全<%=  @products_count %>件)</span>
 				</h3>
 				<div class="row produt-box">
 					<% @products.each do |products| %>

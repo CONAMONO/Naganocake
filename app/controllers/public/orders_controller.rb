@@ -4,10 +4,20 @@ class Public::OrdersController < ApplicationController
 	
 	def top
 		@products = Product.page(params[:page]).per(PER)
-		@products_count = Product.select("id").count
+		#@products_count = Product.select("id").count
 		@product_name = Product.select("name")
 		@product_price = Product.select("non_taxed_price")
 		@genres = Genre.where(status: "1")
+		@products_count = 0
+		@genres.each do |genre|
+			if genre.status
+				@products.each do |product|
+					if product.sale_status && genre.id == product.genre_id
+						@products_count += 1
+					end
+				end
+			end
+		end
 	end
 
 	def new
