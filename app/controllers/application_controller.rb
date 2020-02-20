@@ -52,9 +52,6 @@ class ApplicationController < ActionController::Base
 
 def set_search
     @search = Product.ransack(params[:q])
-  if params[:q]
     @search_product = @search.result.page(params[:page]).per(10)
-  end
-
 end
 end
