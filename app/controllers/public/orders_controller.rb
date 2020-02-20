@@ -2,6 +2,7 @@ class Public::OrdersController < ApplicationController
   	before_action :authenticate_user!, except: [:top, :about]
 	PER = 8
 	
+	
 	def top
 		@products = Product.page(params[:page]).per(PER)
 		#@products_count = Product.select("id").count
